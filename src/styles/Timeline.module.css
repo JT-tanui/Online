@@ -1,188 +1,127 @@
-.timelineSection {
-  padding: 4rem 0;
-}
-
-.sectionTitle {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 3rem;
-  color: var(--secondary-color);
-}
-
-.timelineContainer {
+.timeline {
   position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.timelineContainer::after {
-  content: '';
-  position: absolute;
-  width: 4px;
-  background-color: var(--primary-color);
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  padding: 20px 0;
+  margin-top: 30px;
 }
 
 .timelineTitle {
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
   text-align: center;
-  color: var(--text-color);
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  color: var(--secondary-color);
 }
 
-.timeline {
+.timelineContent {
   position: relative;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.timeline::before {
+.timelineContent::after {
   content: '';
   position: absolute;
+  width: 6px;
+  background-color: var(--medium-gray);
   top: 0;
-  left: 50px;
-  height: 100%;
-  width: 2px;
-  background-color: var(--primary-color);
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+  border-radius: 3px;
 }
 
 .timelineItem {
+  padding: 10px 40px;
   position: relative;
   width: 50%;
-  margin-bottom: 40px;
+  box-sizing: border-box;
 }
 
 .timelineItem:nth-child(odd) {
   left: 0;
-  padding-right: 40px;
 }
 
 .timelineItem:nth-child(even) {
   left: 50%;
-  padding-left: 40px;
 }
 
-.timelineItem:last-child {
-  margin-bottom: 0;
-}
-
-.timelineMarker {
+.timelineBadge {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 1.5em;
+  text-align: center;
   position: absolute;
-  left: 42px;
-  top: 0;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 20px;
-}
-
-.timelinePoint {
-  width: 16px;
-  height: 16px;
+  top: 16px;
   border-radius: 50%;
-  background-color: var(--primary-color);
-  border: 3px solid var(--background-color);
+  background: var(--card-bg);
+  border: 3px solid var(--primary-color);
+  z-index: 1;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-.timelineContent {
-  background-color: var(--card-bg);
+.timelineItem:nth-child(odd) .timelineBadge {
+  right: -20px;
+}
+
+.timelineItem:nth-child(even) .timelineBadge {
+  left: -20px;
+}
+
+.timelinePanel {
+  position: relative;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px var(--card-shadow);
+  background: var(--card-bg);
+  border-radius: 6px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  border-left: 3px solid var(--primary-color);
 }
 
-.timelineContent h3 {
+.timelineHeading {
+  font-size: 1.1rem;
   margin-top: 0;
-  color: var(--primary-color);
+  margin-bottom: 8px;
+  color: var(--secondary-color);
 }
 
-.timelineContent h4 {
-  font-style: italic;
+.timelineSubheading {
   color: var(--text-color);
-  margin: 5px 0;
-  opacity: 0.8;
+  font-size: 1rem;
+  margin-bottom: 5px;
 }
 
 .timelineYear {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 5px 15px;
-  border-radius: 20px;
-  display: inline-block;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
-.timelineItem:before {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: var(--background-color);
-  border: 4px solid var(--primary-color);
-  border-radius: 50%;
-  top: 15px;
-  z-index: 1;
-}
-
-.timelineItem:nth-child(odd):before {
-  right: -12px;
-}
-
-.timelineItem:nth-child(even):before {
-  left: -12px;
-}
-
-.timelineItemTitle {
-  font-size: 1.2rem;
-  margin: 0 0 0.4rem 0;
-  color: var(--text-color);
-}
-
-.timelineCompany {
-  font-size: 1rem;
-  margin-bottom: 0.8rem;
-  color: var(--secondary-color);
   font-style: italic;
-}
-
-.timelineDescription {
-  font-size: 1rem;
-  line-height: 1.6;
+  color: var(--primary-color);
+  font-size: 0.9rem;
   margin: 0;
-  color: var(--text-color);
 }
 
 /* Mobile responsiveness */
 @media screen and (max-width: 768px) {
-  .timelineContainer::after {
+  .timelineContent::after {
     left: 31px;
   }
   
   .timelineItem {
     width: 100%;
-    padding-left: 80px;
+    padding-left: 70px;
     padding-right: 25px;
   }
   
   .timelineItem:nth-child(odd) {
     left: 0;
-    padding-right: 25px;
-    padding-left: 80px;
   }
   
   .timelineItem:nth-child(even) {
     left: 0;
   }
   
-  .timelineItem:before {
-    left: 20px;
+  .timelineItem:nth-child(odd) .timelineBadge {
+    left: 10px;
+    right: auto;
   }
   
-  .timelineItem:nth-child(odd):before {
-    right: auto;
-    left: 20px;
+  .timelineItem:nth-child(even) .timelineBadge {
+    left: 10px;
   }
 }

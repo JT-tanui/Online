@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Timeline from './Timeline';
 import styles from '../styles/About.module.css';
 import { personalInfo } from '../data/personalInfo';
@@ -45,11 +45,10 @@ const About = () => {
               <p>{experience.period || ""}</p>
             </div>
           </div>
-          <Timeline />
         </div>
       </div>
       
-      {/* Add timeline section */}
+      {/* Add timeline section - only render once when client-side */}
       {isClient && <Timeline />}
     </div>
   );

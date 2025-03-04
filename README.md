@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Portfolio Website
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js to showcase my projects, skills, and professional experience.
 
-First, run the development server:
+![Portfolio Screenshot](public/images/portfolio-screenshot.png)
 
+## 🌐 Live Demo
+
+[View the live site](https://your-portfolio-url.netlify.app)
+
+## ✨ Features
+
+- Responsive design that works on all devices
+- Dark/light mode toggle
+- Interactive skill visualizations with radar charts
+- Filterable projects by category
+- Client testimonials section
+- Contact form with validation
+- SEO optimized
+- Smooth scrolling and animations
+- Optimized performance
+
+## 🛠️ Built With
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: CSS Modules
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Charts**: [Chart.js](https://www.chartjs.org/) & [react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2)
+- **Form Handling**: [React Hook Form](https://react-hook-form.com/)
+- **Deployment**: [Netlify](https://www.netlify.com/)
+
+## 📦 Project Structure
+
+```
+portfolio/
+├── public/
+│   ├── images/
+│   ├── favicon.ico
+│   └── ...
+├── src/
+│   ├── components/
+│   │   ├── About.js
+│   │   ├── Contact.js
+│   │   ├── Footer.js
+│   │   ├── Header.js
+│   │   ├── Hero.js
+│   │   ├── Projects.js
+│   │   ├── SEO.js
+│   │   ├── Skills.js
+│   │   ├── SkillRadarChart.js
+│   │   └── Testimonials.js
+│   ├── data/
+│   │   ├── personalInfo.js
+│   │   ├── projects.js
+│   │   └── skills.js
+│   ├── pages/
+│   │   ├── _app.js
+│   │   ├── _document.js
+│   │   └── index.js
+│   └── styles/
+│       ├── globals.css
+│       └── [Component].module.css files
+└── package.json
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v14.0.0 or later)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
 ```bash
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
+```
+
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Run the development server
+```bash```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+# or
+yarn build
+```
 
-## Learn More
+## 🔍 SEO Optimization
 
-To learn more about Next.js, take a look at the following resources:
+This portfolio includes:
+- Meta tags for better search engine indexing
+- Open Graph tags for social media sharing
+- Structured data for better Google search results
+- Proper semantic HTML
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📱 Responsive Design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The portfolio is fully responsive and works on:
+- Mobile phones
+- Tablets
+- Desktops
+- Large screens
 
-## Deploy on Vercel
+## ⚙️ Customization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Updating Personal Information
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Edit the data files in data folder:
+- `personalInfo.js` - Your name, title, about text, etc.
+- `projects.js` - Your projects and their details
+- `skills.js` - Your skills and proficiency levels
+
+### Changing Colors and Theme
+
+Edit the CSS variables in globals.css
+
+## 📝 License
+
+MIT License
+
+## 🤝 Acknowledgements
+
+- [React Icons](https://react-icons.github.io/react-icons/) for the icon set
+- [Google Fonts](https://fonts.google.com/) for typography
+- All my clients and colleagues who provided testimonials
+
+Similar code found with 1 license type

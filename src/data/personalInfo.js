@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: "Your Name",
-  title: "Software Developer",
+  title: "software Developer",
   introduction: "I am a passionate software developer with a strong foundation in web development and a keen eye for creating elegant user experiences.",
   longIntro: `I am a dedicated software developer specializing in building responsive and accessible web applications.
   With a background in computer science and hands-on experience with modern web technologies,
@@ -12,15 +12,31 @@ export const personalInfo = {
   
   education: {
     degree: "Bachelor of Science in Computer Science",
-    institution: "Your University",
-    period: "2018-2022"
+    institution: "University Name",
+    period: "2022-2025"
   },
   
   experience: {
-    position: "Software Developer Intern",
-    company: "Tech Company Name",
-    period: "2022-Present"
+    position: "Front-end Developer",
+    company: "Company Name",
+    period: "2021-Present"
   },
+  
+  additionalEducation: [
+    {
+      degree: "Master's in Web Development",
+      institution: "Advanced University",
+      period: "2015-2017"
+    }
+  ],
+  
+  additionalExperience: [
+    {
+      position: "Intern Developer",
+      company: "Startup Inc",
+      period: "2020-2021"
+    }
+  ],
   
   // Add social links
   socials: {
