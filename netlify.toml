@@ -5,12 +5,14 @@
 # Environment variables
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
+  NODE_VERSION = "16" # Ensure compatible Node version
 
 # Redirect all paths to handle client-side routing
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  force = true
 
 # Add headers for security and caching
 [[headers]]
