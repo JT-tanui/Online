@@ -1,6 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import styles from '../styles/Skills.module.css';
 import { skills } from '../data/skills';
+
+// Load the chart component only on the client side
+const SkillsRadarChart = dynamic(() => import('./SkillsRadarChart'), {
+  ssr: false,
+  loading: () => <div>Loading skills visualization...</div>
+});
 
 const Skills = () => {
   const [isClient, setIsClient] = useState(false);
@@ -25,6 +32,12 @@ const Skills = () => {
       <h2 className={styles.sectionTitle}>Skills</h2>
       
       <div className={styles.container}>
+        {/* Add the radar chart */}
+        <div className={styles.chartContainer}>
+          <h3>Skills Visualization</h3>
+          {isClient && <SkillsRadarChart />}
+        </div>
+        
         <div className={styles.skillCategory}>
           <h3>Technical Skills</h3>
           <div className={styles.skillBars}>

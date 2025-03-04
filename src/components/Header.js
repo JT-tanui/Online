@@ -16,7 +16,7 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
       
       // Update active section based on scroll position
-      const sections = ['home', 'about', 'projects', 'skills', 'contact'];
+      const sections = ['home', 'about', 'projects', 'skills', 'testimonials', 'contact'];
       const sectionElements = sections.map(id => document.getElementById(id));
       
       for (let i = sectionElements.length - 1; i >= 0; i--) {
@@ -51,6 +51,9 @@ const Header = () => {
             </li>
             <li role="none" className={activeSection === 'skills' ? styles.active : ''}>
               <Link href="#skills" role="menuitem" aria-current={activeSection === 'skills' ? 'page' : undefined}>Skills</Link>
+            </li>
+            <li role="none" className={activeSection === 'testimonials' ? styles.active : ''}>
+              <Link href="#testimonials" role="menuitem" aria-current={activeSection === 'testimonials' ? 'page' : undefined}>Testimonials</Link>
             </li>
             <li role="none" className={activeSection === 'contact' ? styles.active : ''}>
               <Link href="#contact" role="menuitem" aria-current={activeSection === 'contact' ? 'page' : undefined}>Contact</Link>

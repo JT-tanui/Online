@@ -62,6 +62,9 @@ const MobileNavigation = () => {
                 <Link href="#skills" onClick={() => setIsOpen(false)}>Skills</Link>
               </li>
               <li>
+                <Link href="#testimonials" onClick={() => setIsOpen(false)}>Testimonials</Link>
+              </li>
+              <li>
                 <Link href="#contact" onClick={() => setIsOpen(false)}>Contact</Link>
               </li>
             </ul>

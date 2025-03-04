@@ -1,0 +1,105 @@
+.timelineContainer {
+  margin: 3rem 0;
+}
+
+.timelineTitle {
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: var(--text-color);
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50px;
+  height: 100%;
+  width: 2px;
+  background-color: var(--primary-color);
+}
+
+.timelineItem {
+  position: relative;
+  padding-left: 70px;
+  margin-bottom: 3rem;
+}
+
+.timelineItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineMarker {
+  position: absolute;
+  left: 42px;
+  top: 0;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+}
+
+.timelinePoint {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  border: 3px solid var(--background-color);
+}
+
+.timelineContent {
+  background-color: var(--card-background);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.timelineYear {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  border-radius: 30px;
+  margin-bottom: 0.8rem;
+}
+
+.timelineItemTitle {
+  font-size: 1.2rem;
+  margin: 0 0 0.4rem 0;
+  color: var(--text-color);
+}
+
+.timelineCompany {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: var(--secondary-color);
+  font-style: italic;
+}
+
+.timelineDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+  color: var(--text-color);
+}
+
+@media screen and (max-width: 768px) {
+  .timeline::before {
+    left: 30px;
+  }
+  
+  .timelineMarker {
+    left: 22px;
+  }
+  
+  .timelineItem {
+    padding-left: 50px;
+  }
+}

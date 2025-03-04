@@ -27,6 +27,11 @@ const Contact = dynamic(() => import('../components/Contact'), {
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
 });
 
+const Testimonials = dynamic(() => import('../components/Testimonials'), {
+  ssr: false,
+  loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
+});
+
 const Footer = dynamic(() => import('../components/Footer'), {
   ssr: false,
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>Loading...</div>
@@ -59,6 +64,10 @@ export default function Home() {
         
         <section id="skills">
           <Skills />
+        </section>
+        
+        <section id="testimonials">
+          <Testimonials />
         </section>
         
         <section id="contact">

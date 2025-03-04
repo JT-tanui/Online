@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import styles from '../styles/About.module.css';
 import { personalInfo } from '../data/personalInfo';
 
-// Optional import - only used on client
-let AnimatedSection = ({ children, ...props }) => <div {...props}>{children}</div>;
-
-// Only import AnimatedSection on the client side
-if (typeof window !== 'undefined') {
-  import('./AnimatedSection').then((mod) => {
-    AnimatedSection = mod.default;
-  });
-}
+// Dynamic import for Timeline component
+const Timeline = dynamic(() => import('./Timeline'), {
+  ssr: false,
+  loading: () => <div>Loading timeline...</div>
+});
 
 const About = () => {
-  // State to track if we're on the client
   const [isClient, setIsClient] = useState(false);
 
-  // Set isClient to true when component mounts
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -26,8 +21,7 @@ const About = () => {
   const education = personalInfo?.education || {};
   const experience = personalInfo?.experience || {};
   
-  // Basic content without animations
-  const content = (
+  return (
     <div className={styles.about}>
       <h2 className={styles.sectionTitle}>About Me</h2>
       <div className={styles.container}>
@@ -59,19 +53,10 @@ const About = () => {
           </div>
         </div>
       </div>
+      
+      {/* Add timeline section */}
+      {isClient && <Timeline />}
     </div>
-  );
-
-  // On the server, just return the content
-  if (!isClient) {
-    return content;
-  }
-
-  // On the client, wrap in AnimatedSection
-  return (
-    <AnimatedSection className={styles.about}>
-      {content}
-    </AnimatedSection>
   );
 };
 

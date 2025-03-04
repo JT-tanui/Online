@@ -28,5 +28,30 @@ export const personalInfo = {
     linkedin: "https://linkedin.com/in/yourusername",
     twitter: "https://twitter.com/yourusername",
     email: "your.email@example.com"
-  }
+  },
+  
+  // Add timeline data
+  timeline: [
+    {
+      id: 1,
+      year: "2022 - Present",
+      title: "Software Developer Intern",
+      company: "Tech Company Name",
+      description: "Working on frontend development using React and Next.js. Responsible for implementing responsive user interfaces and improving website performance."
+    },
+    {
+      id: 2,
+      year: "2018 - 2022",
+      title: "Computer Science Student",
+      company: "Your University",
+      description: "Studied fundamentals of computer science, algorithms, data structures, and web development. Completed several projects including a student management system and e-commerce platform."
+    },
+    {
+      id: 3,
+      year: "2017 - 2018",
+      title: "Web Development Intern",
+      company: "Startup Name",
+      description: "Gained foundational experience in HTML, CSS, and JavaScript. Assisted in designing and developing static websites for local businesses."
+    }
+  ]
 };
