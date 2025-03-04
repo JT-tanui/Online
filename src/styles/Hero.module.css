@@ -10,7 +10,7 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: row;  
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
@@ -95,6 +95,31 @@
   align-items: center;
   color: var(--text-color);
   font-weight: 500;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--light-gray);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.socialLink:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px) rotate(8deg);
 }
 
 @media screen and (max-width: 768px) {

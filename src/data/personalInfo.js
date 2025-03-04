@@ -1,40 +1,55 @@
 export const personalInfo = {
   name: "Your Name",
-  title: "software Developer",
-  introduction: "I am a passionate software developer with a strong foundation in web development and a keen eye for creating elegant user experiences.",
-  longIntro: `I am a dedicated software developer specializing in building responsive and accessible web applications.
-  With a background in computer science and hands-on experience with modern web technologies,
+  title: "Frontend Developer & UI/UX Designer",
+  email: "hello@example.com",
+  location: "San Francisco, CA",
+  phone: "+1 234 567 8910",
+  introduction: "A passionate full-stack developer with expertise in React, Node.js, and modern web technologies. I create responsive, user-friendly applications with clean code and optimal performance.",
+  shortBio: "I build elegant and performant web applications with modern tech stacks.",
+  
+  longIntro: `I am a dedicated software engineer specializing in building responsive and accessible web applications.
+  With hands-on experience in modern technologies, including cloud computing and DevOps practices, 
   I enjoy solving complex problems and turning ideas into reality through clean, efficient code.
   
-  My journey in tech began when I first discovered the power of programming to create solutions
-  that can positively impact people's lives. Since then, I've continually expanded my skill set and
-  stayed current with emerging technologies and best practices in the field.`,
+  My journey in tech began with my passion for creating impactful solutions that enhance user experiences and optimize performance.
+  Since then, I've expanded my skill set by working on various projects, from e-commerce platforms to telemedicine applications,
+  while continuously staying updated with industry trends and best practices.`,
   
   education: {
-    degree: "Bachelor of Science in Computer Science",
-    institution: "University Name",
+    degree: "Diploma in Computer Programming",
+    institution: "Cooperative University of Kenya",
     period: "2022-2025"
   },
   
   experience: {
-    position: "Front-end Developer",
-    company: "Company Name",
-    period: "2021-Present"
+    position: "ICT & Telecommunication Division Intern",
+    company: "Kenya Power",
+    period: "2023"
   },
   
   additionalEducation: [
     {
-      degree: "Master's in Web Development",
-      institution: "Advanced University",
-      period: "2015-2017"
+      degree: "AWS re/Start Program - Cloud Computing",
+      institution: "Amazon Web Services (AWS)",
+      period: "2023"
+    },
+    {
+      degree: "Power Learn Project - Software Development",
+      institution: "Power Learn Project (PLP)",
+      period: "2023"
+    },
+    {
+      degree: "Cybersecurity Course",
+      institution: "IBM",
+      period: "2023"
     }
   ],
   
   additionalExperience: [
     {
-      position: "Intern Developer",
-      company: "Startup Inc",
-      period: "2020-2021"
+      position: "PLP Peer-to-Peer Learning Group Leader",
+      company: "Power Learn Project",
+      period: "2023"
     }
   ],
   
@@ -43,31 +58,40 @@ export const personalInfo = {
     github: "https://github.com/yourusername",
     linkedin: "https://linkedin.com/in/yourusername",
     twitter: "https://twitter.com/yourusername",
-    email: "your.email@example.com"
+    instagram: "https://instagram.com/yourusername",
+    credly: "https://www.credly.com/users/yourusername",
+    wakatime: "https://wakatime.com/@yourusername"
   },
   
   // Add timeline data
   timeline: [
     {
       id: 1,
-      year: "2022 - Present",
-      title: "Software Developer Intern",
-      company: "Tech Company Name",
-      description: "Working on frontend development using React and Next.js. Responsible for implementing responsive user interfaces and improving website performance."
+      year: "2023",
+      title: "ICT & Telecommunication Division Intern",
+      company: "Kenya Power",
+      description: "Worked on network troubleshooting, system maintenance, and software management, contributing to efficient IT infrastructure operations."
     },
     {
       id: 2,
-      year: "2018 - 2022",
-      title: "Computer Science Student",
-      company: "Your University",
-      description: "Studied fundamentals of computer science, algorithms, data structures, and web development. Completed several projects including a student management system and e-commerce platform."
+      year: "2023",
+      title: "AWS re/Start Program",
+      company: "Amazon Web Services (AWS)",
+      description: "Training in cloud computing, AWS services, Linux, networking, and DevOps practices to enhance cloud infrastructure management skills."
     },
     {
       id: 3,
-      year: "2017 - 2018",
-      title: "Web Development Intern",
-      company: "Startup Name",
-      description: "Gained foundational experience in HTML, CSS, and JavaScript. Assisted in designing and developing static websites for local businesses."
+      year: "2023",
+      title: "Power Learn Project - Software Development",
+      company: "Power Learn Project",
+      description: "Gained expertise in front-end and back-end development, database management, and cloud deployment while leading a peer-to-peer learning group."
+    },
+    {
+      id: 4,
+      year: "2023",
+      title: "Cybersecurity Course",
+      company: "IBM",
+      description: "Learned fundamental cybersecurity concepts, risk management, and best practices for securing applications and infrastructure."
     }
   ]
 };

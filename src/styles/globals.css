@@ -1,43 +1,88 @@
 :root {
-  /* Color palette - Light mode */
-  --primary-color: #0070f3;
-  --secondary-color: #0e141b;
-  --accent-color: #64ffda;
+  /* Light theme variables (default) */
   --background-color: #ffffff;
-  --text-color: #333333;
-  --light-gray: #f5f5f5;
-  --medium-gray: #e0e0e0;
   --card-bg: #ffffff;
-  --card-shadow: rgba(0, 0, 0, 0.1);
-  --border-color: #e0e0e0;
+  --text-color: #333333;
+  --secondary-color: #2d3748;
+  --primary-color: #3182ce;
+  --button-hover: #2c5282;
+  --light-gray: #f7fafc;
+  --medium-gray: #e2e8f0;
+  --border-color: #edf2f7;
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --footer-bg: #f7fafc;
+  --footer-text: #4a5568;
+  --footer-border: #edf2f7;
+  
+  /* Light mode variables - Apple-inspired */
+  --primary-color: #0066CC;       /* More muted blue */
+  --primary-light: #3385D6;       /* Lighter blue for hover states */
+  --secondary-color: #333333;     /* Near-black for headings */
+  --accent-color: #34C759;        /* Apple's green */
+  --background-color: #F5F5F7;    /* Apple's signature light gray background */
+  --text-color: #1D1D1F;          /* Apple's near-black text color */
+  --light-gray: #E8E8ED;          /* Apple subtle gray */
+  --medium-gray: #D2D2D7;         /* Apple medium gray */
+  --card-bg: #ffffff;             /* White for cards */
+  --card-shadow: rgba(0, 0, 0, 0.05); /* More subtle shadows */
   --input-bg: #ffffff;
-  --input-text: #333333;
-  --button-hover: #0057b7;
-  --progress-bg: #e9ecef;
-  --skill-item-bg: #f8f9fa;
+  --input-text: #1D1D1F;
+  --input-border: #D2D2D7;
+  --input-focus-border: #0066CC;  /* Matching primary */
+  --button-bg: #0066CC;           /* Matching primary */
+  --button-text: #ffffff;
+  --button-hover: #004E9A;        /* Darker blue for hover */
+  --border-color: #D2D2D7;        /* Apple border color */
+  --form-bg: #F5F5F7;             /* Match background */
+  --footer-bg: #F2F2F6;           /* Slightly different from main bg */
+  --footer-text: #515154;         /* Apple's secondary text color */
+  --footer-border: #D2D2D7;
   
   /* Typography */
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-  --font-mono: 'Roboto Mono', 'Courier New', Courier, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --font-mono: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --background-color: #1a202c;
+  --card-bg: #2d3748;
+  --text-color: #e2e8f0;
+  --secondary-color: #e2e8f0;
+  --primary-color: #4299e1;
+  --button-hover: #63b3ed;
+  --light-gray: #2d3748;
+  --medium-gray: #4a5568;
+  --border-color: #4a5568;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --footer-bg: #2d3748;
+  --footer-text: #e2e8f0;
+  --footer-border: #4a5568;
 }
 
 /* Dark mode variables - IMPROVED CONTRAST */
 body.dark-mode {
-  --primary-color: #4d9fffe8;
-  --secondary-color: #f0f6fc;
-  --accent-color: #80ffdb;
-  --background-color: #121212;
-  --text-color: #e6edf3;
-  --light-gray: #2d333b;
-  --medium-gray: #444c56;
-  --card-bg: #1c1c1c;
+  --primary-color: #3291ff;
+  --secondary-color: #e6edf3;
+  --accent-color: #64ffda;
+  --background-color: #0d1117;
+  --text-color: #c9d1d9;
+  --light-gray: #21262d;
+  --medium-gray: #30363d;
+  --card-bg: #161b22;
   --card-shadow: rgba(0, 0, 0, 0.3);
+  --input-bg: #0d1117;
+  --input-text: #c9d1d9;
+  --input-border: #30363d;
+  --input-focus-border: #58a6ff;
+  --button-bg: #1f6feb;
+  --button-text: #ffffff;
+  --button-hover: #388bfd;
   --border-color: #30363d;
-  --input-bg: #2d333b;
-  --input-text: #e6edf3;
-  --button-hover: #2188ff;
-  --progress-bg: #30363d;
-  --skill-item-bg: #2d333b;
+  --form-bg: #0d1117;
+  --footer-bg: #161b22;
+  --footer-text: #c9d1d9;
+  --footer-border: #30363d;
 }
 
 * {
@@ -80,18 +125,21 @@ h1, h2, h3, h4, h5 {
   padding: 0 1.5rem;
 }
 
-/* Card styling for consistent appearance across components */
+/* Card styling in Apple-like design */
 .card {
   background-color: var(--card-bg);
-  border-radius: 8px;
-  box-shadow: 0 4px 20px var(--card-shadow);
+  border-radius: 12px;  /* More rounded corners like Apple */
+  box-shadow: 0 1px 5px var(--card-shadow), 
+              0 8px 20px rgba(0, 0, 0, 0.03); /* Multi-layered shadow */
   padding: 1.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.02); /* Very subtle border */
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px var(--card-shadow);
+  transform: translateY(-3px); /* More subtle lift */
+  box-shadow: 0 2px 8px var(--card-shadow),
+              0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 /* Apply these new variables to elements */
@@ -101,6 +149,30 @@ h1, h2, h3, h4, h5 {
 .testimonialCard {
   background-color: var(--card-bg);
   box-shadow: 0 4px 20px var(--card-shadow);
+}
+
+/* Add this to your globals.css or create a Button.module.css */
+.button {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 8px; /* Apple-like rounded corners */
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+  transform: scale(1.02);
+}
+
+.button:active {
+  transform: scale(0.98);
 }
 
 /* Tablet devices */

@@ -86,7 +86,7 @@
 }
 
 .contactForm {
-  background-color: white;
+  background-color: var(--form-bg);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -119,8 +119,8 @@
 }
 
 .submitButton {
-  background-color: var(--primary-color);
-  color: white;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   border: none;
   padding: 0.75rem 1.5rem;
   border-radius: 4px;
@@ -130,7 +130,7 @@
 }
 
 .submitButton:hover {
-  background-color: #0051cc;
+  background-color: var(--button-hover);
 }
 
 .submitButton:disabled {
@@ -164,6 +164,17 @@
   color: #dc3545;
   font-size: 0.85rem;
   margin-top: 0.25rem;
+}
+
+.formControl {
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  border: 1px solid var(--input-border);
+  /* rest of your styles */
+}
+
+.formControl:focus {
+  border-color: var(--input-focus-border);
 }
 
 @media screen and (max-width: 768px) {

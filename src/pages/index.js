@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import SEO from '../components/SEO'; // Import SEO component
+import Testimonials from '../components/Testimonials';
+// import ThemeDebug from '../components/ThemeDebug'; // Add to a page temporarily
 
 // Use dynamic imports with no SSR for components with animations
 const About = dynamic(() => import('../components/About'), {
@@ -25,17 +27,13 @@ const Contact = dynamic(() => import('../components/Contact'), {
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
 });
 
-const Testimonials = dynamic(() => import('../components/Testimonials'), {
-  ssr: false,
-  loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
-});
-
 const Footer = dynamic(() => import('../components/Footer'), {
   ssr: false,
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>Loading...</div>
 });
 
 export default function Home() {
+  console.log('Rendering Home page');
   return (
     <>
       <SEO /> {/* Use SEO component instead of direct Head */}
@@ -69,6 +67,7 @@ export default function Home() {
       </main>
       
       <Footer />
+      {/* <ThemeDebug /> Add to a page temporarily */}
     </>
   );
 }

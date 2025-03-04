@@ -11,10 +11,15 @@ const SEO = ({
   const router = useRouter();
   const canonicalUrl = `https://yourdomain.com${router.asPath}`; // Replace with your actual domain
 
+  // Set default values
+  const siteTitle = title || 'Developer Portfolio';
+  const siteDescription = description || 'A showcase of my work and skills as a developer';
+  const siteImage = ogImage || '/images/og-image.jpg';
+
   return (
     <Head>
-      <title>{title}</title>
-      <meta name="description" content={description} />
+      <title>{siteTitle}</title>
+      <meta name="description" content={siteDescription} />
       <meta name="keywords" content={keywords} />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <link rel="icon" href="/favicon.ico" />
@@ -22,16 +27,16 @@ const SEO = ({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:title" content={siteTitle} />
+      <meta property="og:description" content={siteDescription} />
+      <meta property="og:image" content={siteImage} />
 
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={canonicalUrl} />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={ogImage} />
+      <meta property="twitter:title" content={siteTitle} />
+      <meta property="twitter:description" content={siteDescription} />
+      <meta property="twitter:image" content={siteImage} />
       
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />

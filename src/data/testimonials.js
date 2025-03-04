@@ -1,23 +1,20 @@
 export const testimonials = [
   {
     id: 1,
-    name: "Jane Smith",
-    position: "Project Manager at Tech Solutions",
-    text: "Working with this developer was a pleasure. They consistently delivered high-quality code ahead of schedule and was proactive in identifying and solving problems before they became issues.",
-    image: "/images/testimonials/jane.jpg" // Add this to your public folder later
+    name: "Sarah Johnson",
+    position: "Product Manager at TechCorp",
+    text: "Working with this developer was a fantastic experience. Their attention to detail and ability to translate our vision into a functional product exceeded our expectations. The project was delivered on time and the quality of code was outstanding."
   },
   {
     id: 2,
-    name: "Michael Johnson",
+    name: "Michael Chen",
     position: "CTO at StartupX",
-    text: "I was impressed by the clean, well-documented code and the attention to detail. This developer has a great eye for design and UX, making our product not just functional but also beautiful and user-friendly.",
-    image: "/images/testimonials/michael.jpg"
+    text: "An exceptionally talented developer who consistently delivers high-quality work. Their technical expertise and problem-solving skills were crucial to the success of our application. I highly recommend their services for any web development project."
   },
   {
     id: 3,
-    name: "Sara Williams",
-    position: "Lead Developer at WebCraft",
-    text: "A true professional who knows how to work in a team. Great communication skills, excellent problem-solving abilities, and deep knowledge of modern web development practices. Would definitely work with them again.",
-    image: "/images/testimonials/sara.jpg"
+    name: "Emily Rodriguez",
+    position: "Frontend Lead at DesignLabs",
+    text: "I've collaborated with many developers, but few have the same level of proficiency in both design implementation and functional programming. Their ability to write clean, efficient code while maintaining a user-friendly interface is remarkable."
   }
 ];
