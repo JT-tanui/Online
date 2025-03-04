@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from '../styles/About.module.css';
 import { personalInfo } from '../data/personalInfo';
-import AnimatedSection from './AnimatedSection';
+
+// Optional import - only used on client
+let AnimatedSection = ({ children, ...props }) => <div {...props}>{children}</div>;
+
+// Only import AnimatedSection on the client side
+if (typeof window !== 'undefined') {
+  import('./AnimatedSection').then((mod) => {
+    AnimatedSection = mod.default;
+  });
+}
 
 const About = () => {
+  // State to track if we're on the client
+  const [isClient, setIsClient] = useState(false);
+
+  // Set isClient to true when component mounts
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   // Make sure personalInfo exists before accessing its properties
   const education = personalInfo?.education || {};
   const experience = personalInfo?.experience || {};
   
-  return (
+  // Basic content without animations
+  const content = (
     <div className={styles.about}>
       <h2 className={styles.sectionTitle}>About Me</h2>
       <div className={styles.container}>
@@ -17,16 +35,8 @@ const About = () => {
           <div className={styles.imagePlaceholder}>
             <p>Profile Image</p>
           </div>
-          {/* Uncomment when image is available */}
-          {/* <Image
-            src="/images/about-image.jpg"
-            alt="About Me"
-            width={400}
-            height={400}
-            className={styles.aboutImage}
-          /> */}
         </div>
-        <AnimatedSection className={styles.content}>
+        <div className={styles.content}>
           <p className={styles.intro}>
             {personalInfo?.introduction || ""}
           </p>
@@ -47,9 +57,21 @@ const About = () => {
               <p>{experience.period || ""}</p>
             </div>
           </div>
-        </AnimatedSection>
+        </div>
       </div>
     </div>
+  );
+
+  // On the server, just return the content
+  if (!isClient) {
+    return content;
+  }
+
+  // On the client, wrap in AnimatedSection
+  return (
+    <AnimatedSection className={styles.about}>
+      {content}
+    </AnimatedSection>
   );
 };
 

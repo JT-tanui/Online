@@ -2,26 +2,33 @@ import React from 'react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Header from '../components/Header';
+
+// Import Hero component normally since it's simpler
 import Hero from '../components/Hero';
 
-// Use Next.js dynamic imports instead of React.lazy
+// Use dynamic imports with no SSR for components with animations
 const About = dynamic(() => import('../components/About'), {
+  ssr: false,
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
 });
 
 const Projects = dynamic(() => import('../components/Projects'), {
+  ssr: false,
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
 });
 
 const Skills = dynamic(() => import('../components/Skills'), {
+  ssr: false,
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
 });
 
 const Contact = dynamic(() => import('../components/Contact'), {
+  ssr: false,
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
 });
 
 const Footer = dynamic(() => import('../components/Footer'), {
+  ssr: false,
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>Loading...</div>
 });
 

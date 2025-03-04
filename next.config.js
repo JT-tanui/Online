@@ -7,6 +7,11 @@ const nextConfig = {
   },
   // Ensure trailing slashes for consistent routing
   trailingSlash: true,
+  // Add this to handle unexpected errors more gracefully
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  }
 }
 
 module.exports = nextConfig

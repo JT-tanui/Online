@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/Contact.module.css';
 import { personalInfo } from '../data/personalInfo';
 import AnimatedSection from './AnimatedSection';
@@ -14,6 +14,11 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
   const [submitMessage, setSubmitMessage] = useState('');
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const validateForm = () => {
     let tempErrors = {};
@@ -45,6 +50,8 @@ const Contact = () => {
   };
 
   const handleChange = (e) => {
+    if (!isClient) return; // Don't update state during SSR
+    
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -110,7 +117,7 @@ const Contact = () => {
               <div className={styles.contactIcon}>📧</div>
               <div className={styles.contactText}>
                 <h4>Email</h4>
-                <a href={`mailto:${personalInfo.socials.email}`}>{personalInfo.socials.email}</a>
+                <a href={`mailto:${personalInfo?.socials?.email || ''}`}>{personalInfo?.socials?.email || ''}</a>
               </div>
             </div>
             
@@ -119,9 +126,9 @@ const Contact = () => {
               <div className={styles.contactText}>
                 <h4>Connect</h4>
                 <div className={styles.socialLinks}>
-                  <a href={personalInfo.socials.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-                  <a href={personalInfo.socials.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                  <a href={personalInfo.socials.twitter} target="_blank" rel="noopener noreferrer">Twitter</a>
+                  <a href={personalInfo?.socials?.github || '#'} target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <a href={personalInfo?.socials?.linkedin || '#'} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                  <a href={personalInfo?.socials?.twitter || '#'} target="_blank" rel="noopener noreferrer">Twitter</a>
                 </div>
               </div>
             </div>
