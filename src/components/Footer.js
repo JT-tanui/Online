@@ -3,6 +3,17 @@ import Link from 'next/link';
 import styles from '../styles/Footer.module.css';
 import { personalInfo } from '../data/personalInfo';
 
+const SocialLink = ({ href, icon, label, isVisible = true }) => {
+  if (!isVisible || !href) return null;
+  
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+      <i className={icon}></i>
+      <span className={styles.linkLabel}>{label}</span>
+    </a>
+  );
+};
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
@@ -16,27 +27,37 @@ const Footer = () => {
           <p className={styles.shortBio}>
             {personalInfo?.shortBio || 'A passionate web developer creating modern and responsive web applications.'}
           </p>
-          <div className={styles.socialLinks}>
-            {personalInfo?.socials?.github && (
-              <a href={personalInfo.socials.github} className={styles.socialLink} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <i className="fab fa-github"></i>
-              </a>
-            )}
-            {personalInfo?.socials?.linkedin && (
-              <a href={personalInfo.socials.linkedin} className={styles.socialLink} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
-            )}
-            {personalInfo?.socials?.twitter && (
-              <a href={personalInfo.socials.twitter} className={styles.socialLink} target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                <i className="fab fa-twitter"></i>
-              </a>
-            )}
-            {personalInfo?.socials?.instagram && (
-              <a href={personalInfo.socials.instagram} className={styles.socialLink} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <i className="fab fa-instagram"></i>
-              </a>
-            )}
+          <div className={styles.social}>
+            <h3>Connect</h3>
+            <div className={styles.socialLinks}>
+              <SocialLink 
+                href={personalInfo?.socials?.github} 
+                icon="fab fa-github" 
+                label="GitHub" 
+              />
+              <SocialLink 
+                href={personalInfo?.socials?.linkedin} 
+                icon="fab fa-linkedin-in" 
+                label="LinkedIn" 
+              />
+              <SocialLink 
+                href={personalInfo?.socials?.twitter} 
+                icon="fab fa-twitter" 
+                label="Twitter" 
+              />
+              <SocialLink 
+                href={personalInfo?.socials?.credly} 
+                icon="fas fa-certificate" 
+                label="Credly" 
+                isVisible={!!personalInfo?.socials?.credly}
+              />
+              <SocialLink 
+                href={personalInfo?.socials?.wakatime} 
+                icon="fas fa-code" 
+                label="WakaTime" 
+                isVisible={!!personalInfo?.socials?.wakatime}
+              />
+            </div>
           </div>
         </div>
         
@@ -65,6 +86,28 @@ const Footer = () => {
               <strong>Available for:</strong> Freelance, Full-time positions
             </li>
           </ul>
+        </div>
+
+        <div className={styles.contact}>
+          <h3>Contact Info</h3>
+          {personalInfo?.email && (
+            <a href={`mailto:${personalInfo.email}`} className={styles.contactItem}>
+              <i className="fas fa-envelope"></i>
+              <span>{personalInfo.email}</span>
+            </a>
+          )}
+          {personalInfo?.phone && (
+            <a href={`tel:${personalInfo.phone}`} className={styles.contactItem}>
+              <i className="fas fa-phone"></i>
+              <span>{personalInfo.phone}</span>
+            </a>
+          )}
+          {personalInfo?.location && (
+            <p className={styles.contactItem}>
+              <i className="fas fa-map-marker-alt"></i>
+              <span>{personalInfo.location}</span>
+            </p>
+          )}
         </div>
         
         <p className={styles.copyText}>

@@ -85,6 +85,28 @@ const Hero = () => {
                 <i className="fab fa-instagram"></i>
               </a>
             )}
+            {personalInfo?.socials?.credly && (
+              <a 
+                href={personalInfo.socials.credly} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="Credly Certifications"
+              >
+                <i className="fas fa-certificate"></i>
+              </a>
+            )}
+            {personalInfo?.socials?.wakatime && (
+              <a 
+                href={personalInfo.socials.wakatime} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="WakaTime Coding Stats"
+              >
+                <i className="fas fa-code"></i>
+              </a>
+            )}
           </motion.div>
           
           <motion.div 

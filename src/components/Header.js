@@ -99,6 +99,7 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "tween", duration: 0.3 }}
+              style={{ zIndex: 1000 }} // Add this higher z-index
             >
               <div className={styles.mobileMenuHeader}>
                 <Link href="/" className={styles.mobileLogo} onClick={handleMenuItemClick}>

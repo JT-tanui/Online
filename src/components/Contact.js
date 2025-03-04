@@ -114,21 +114,46 @@ const Contact = () => {
           
           <div className={styles.contactDetails}>
             <div className={styles.contactItem}>
-              <div className={styles.contactIcon}>📧</div>
+              <div className={styles.contactIcon}>
+                <i className="fas fa-envelope"></i>
+              </div>
               <div className={styles.contactText}>
                 <h4>Email</h4>
-                <a href={`mailto:${personalInfo?.socials?.email || ''}`}>{personalInfo?.socials?.email || ''}</a>
+                <a href={`mailto:${personalInfo?.email || ''}`}>{personalInfo?.email || ''}</a>
               </div>
             </div>
             
             <div className={styles.contactItem}>
-              <div className={styles.contactIcon}>💼</div>
+              <div className={styles.contactIcon}>
+                <i className="fas fa-link"></i>
+              </div>
               <div className={styles.contactText}>
                 <h4>Connect</h4>
                 <div className={styles.socialLinks}>
-                  <a href={personalInfo?.socials?.github || '#'} target="_blank" rel="noopener noreferrer">GitHub</a>
-                  <a href={personalInfo?.socials?.linkedin || '#'} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                  <a href={personalInfo?.socials?.twitter || '#'} target="_blank" rel="noopener noreferrer">Twitter</a>
+                  <a href={personalInfo?.socials?.github || '#'} target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-github"></i>
+                    <span>GitHub</span>
+                  </a>
+                  <a href={personalInfo?.socials?.linkedin || '#'} target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                  </a>
+                  <a href={personalInfo?.socials?.twitter || '#'} target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                  </a>
+                  {personalInfo?.socials?.credly && (
+                    <a href={personalInfo.socials.credly} target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-certificate"></i>
+                      <span>Credly</span>
+                    </a>
+                  )}
+                  {personalInfo?.socials?.wakatime && (
+                    <a href={personalInfo.socials.wakatime} target="_blank" rel="noopener noreferrer">
+                      <i className="fas fa-code"></i>
+                      <span>WakaTime</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

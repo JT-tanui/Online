@@ -1,13 +1,13 @@
 export const personalInfo = {
-  name: "Your Name",
-  title: "Frontend Developer & UI/UX Designer",
-  email: "hello@example.com",
-  location: "San Francisco, CA",
-  phone: "+1 234 567 8910",
-  introduction: "A passionate full-stack developer with expertise in React, Node.js, and modern web technologies. I create responsive, user-friendly applications with clean code and optimal performance.",
-  shortBio: "I build elegant and performant web applications with modern tech stacks.",
+  name: "Job Kiprotich Busienei",
+  title: "Software Engineer",
+  email: "jobtanui21@gmail.com",
+  location: "Nairobi, KE",
+  phone: "+254 707 696 045",
+  introduction: "A passionate Software Engineer with expertise in React, Node.js, and modern web technologies. I create responsive, user-friendly applications with clean code and optimal performance.",
+  shortBio: "I build elegant and performant applications with modern tech stacks.",
   
-  longIntro: `I am a dedicated software engineer specializing in building responsive and accessible web applications.
+  longIntro: `I am a dedicated software engineer specializing in crafting responsive and accessible applications.
   With hands-on experience in modern technologies, including cloud computing and DevOps practices, 
   I enjoy solving complex problems and turning ideas into reality through clean, efficient code.
   
@@ -55,8 +55,8 @@ export const personalInfo = {
   
   // Add social links
   socials: {
-    github: "https://github.com/yourusername",
-    linkedin: "https://linkedin.com/in/yourusername",
+    github: "https://github.com/jt-tanui",
+    linkedin: "https://linkedin.com/in/job-businei",
     twitter: "https://twitter.com/yourusername",
     instagram: "https://instagram.com/yourusername",
     credly: "https://www.credly.com/users/yourusername",
