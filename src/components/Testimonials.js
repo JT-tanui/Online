@@ -1,88 +1,108 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from '../styles/Testimonials.module.css';
 import { testimonials } from '../data/testimonials';
-import { motion } from 'framer-motion';
 
 const Testimonials = () => {
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
-
-    // Auto-scroll testimonials
+    
+    // Auto-rotate testimonials
     const interval = setInterval(() => {
-      setActiveTestimonial((current) => (current + 1) % testimonials.length);
-    }, 5000);
-
+      setCurrentIndex((prevIndex) => 
+        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 8000); // Change testimonial every 8 seconds
+    
     return () => clearInterval(interval);
   }, []);
 
-  if (!isClient) {
-    return (
-      <div className={styles.testimonials}>
-        <h2 className={styles.sectionTitle}>What People Say</h2>
-        <div className={styles.placeholder}>Loading testimonials...</div>
-      </div>
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
     );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const handleDotClick = (index) => {
+    setCurrentIndex(index);
+  };
+
+  if (!isClient) {
+    return null; // Don't render server-side
   }
 
   return (
     <div className={styles.testimonials}>
       <h2 className={styles.sectionTitle}>What People Say</h2>
       
-      <div className={styles.testimonialsContainer}>
-        <div 
-          className={styles.testimonialsTrack}
-          style={{ transform: `translateX(${-activeTestimonial * 100}%)` }}
+      <div className={styles.container}>
+        <button 
+          className={`${styles.navButton} ${styles.prevButton}`}
+          onClick={handlePrevious}
+          aria-label="Previous testimonial"
         >
-          {testimonials.map((testimonial) => (
+          &#8592;
+        </button>
+        
+        <div className={styles.testimonialContainer}>
+          <AnimatePresence mode="wait">
             <motion.div 
-              key={testimonial.id}
+              key={currentIndex}
               className={styles.testimonialCard}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.5 }}
             >
               <div className={styles.testimonialContent}>
-                <div className={styles.quote}>"</div>
-                <p className={styles.testimonialText}>{testimonial.text}</p>
+                <div className={styles.quoteIcon}>"</div>
+                <p className={styles.testimonialText}>{testimonials[currentIndex].text}</p>
               </div>
+              
               <div className={styles.testimonialAuthor}>
                 <div className={styles.authorImage}>
-                  {testimonial.image ? (
-                    <Image 
-                      src={testimonial.image} 
-                      alt={testimonial.name} 
-                      width={60} 
-                      height={60}
-                    />
-                  ) : (
-                    <div className={styles.imagePlaceholder}>
-                      {testimonial.name.charAt(0)}
-                    </div>
-                  )}
+                  {/* Replace with actual image if available */}
+                  <div className={styles.imagePlaceholder}>
+                    {testimonials[currentIndex].name.charAt(0)}
+                  </div>
                 </div>
                 <div className={styles.authorInfo}>
-                  <h4>{testimonial.name}</h4>
-                  <p>{testimonial.role}</p>
+                  <h4>{testimonials[currentIndex].name}</h4>
+                  <p>{testimonials[currentIndex].position}</p>
                 </div>
               </div>
             </motion.div>
-          ))}
+          </AnimatePresence>
         </div>
         
-        <div className={styles.controls}>
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              className={`${styles.dot} ${index === activeTestimonial ? styles.active : ''}`}
-              onClick={() => setActiveTestimonial(index)}
-              aria-label={`View testimonial ${index + 1}`}
-            />
-          ))}
-        </div>
+        <button 
+          className={`${styles.navButton} ${styles.nextButton}`}
+          onClick={handleNext}
+          aria-label="Next testimonial"
+        >
+          &#8594;
+        </button>
+      </div>
+      
+      <div className={styles.dots}>
+        {testimonials.map((_, index) => (
+          <button
+            key={index}
+            className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''}`}
+            onClick={() => handleDotClick(index)}
+            aria-label={`Go to testimonial ${index + 1}`}
+          />
+        ))}
       </div>
     </div>
   );

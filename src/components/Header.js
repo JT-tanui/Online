@@ -58,6 +58,9 @@ const Header = () => {
             <li role="none" className={activeSection === 'contact' ? styles.active : ''}>
               <Link href="#contact" role="menuitem" aria-current={activeSection === 'contact' ? 'page' : undefined}>Contact</Link>
             </li>
+            <li className={activeSection === 'blog' ? styles.active : ''}>
+              <Link href="/blog">Blog</Link>
+            </li>
           </SmoothScroll>
         </ul>
       </nav>

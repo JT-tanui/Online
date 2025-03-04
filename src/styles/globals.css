@@ -4,26 +4,40 @@
   --secondary-color: #0e141b;
   --accent-color: #64ffda;
   --background-color: #ffffff;
-  --card-background: #f8f9fa;
   --text-color: #333333;
   --light-gray: #f5f5f5;
   --medium-gray: #e0e0e0;
-  --border-color: #ddd;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --border-color: #e0e0e0;
+  --input-bg: #ffffff;
+  --input-text: #333333;
+  --button-hover: #0057b7;
+  --progress-bg: #e9ecef;
+  --skill-item-bg: #f8f9fa;
+  
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --font-mono: 'Roboto Mono', 'Courier New', Courier, monospace;
 }
 
-/* Dark mode variables - Updated for better contrast and visual appeal */
+/* Dark mode variables - IMPROVED CONTRAST */
 body.dark-mode {
-  --primary-color: #4da3ff; /* Lighter blue for better visibility */
+  --primary-color: #4d9fffe8;
   --secondary-color: #f0f6fc;
-  --accent-color: #64ffda; /* Keep vibrant accent color */
-  --background-color: #0d1117; /* GitHub dark theme inspired */
-  --card-background: #161b22; /* Slightly lighter than background for cards */
+  --accent-color: #80ffdb;
+  --background-color: #121212;
   --text-color: #e6edf3;
-  --light-gray: #21262d;
-  --medium-gray: #30363d;
+  --light-gray: #2d333b;
+  --medium-gray: #444c56;
+  --card-bg: #1c1c1c;
+  --card-shadow: rgba(0, 0, 0, 0.3);
   --border-color: #30363d;
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --input-bg: #2d333b;
+  --input-text: #e6edf3;
+  --button-hover: #2188ff;
+  --progress-bg: #30363d;
+  --skill-item-bg: #2d333b;
 }
 
 * {
@@ -56,6 +70,7 @@ section {
 
 h1, h2, h3, h4, h5 {
   margin-bottom: 1rem;
+  color: var(--secondary-color);
 }
 
 .container {
@@ -65,10 +80,66 @@ h1, h2, h3, h4, h5 {
   padding: 0 1.5rem;
 }
 
-/* Add this to ensure card-based components look good in dark mode */
-body.dark-mode .projectCard,
-body.dark-mode .skillCategory,
-body.dark-mode .contactForm {
-  background-color: #161b22;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+/* Card styling for consistent appearance across components */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px var(--card-shadow);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px var(--card-shadow);
+}
+
+/* Apply these new variables to elements */
+.projectCard, 
+.skillCategory, 
+.contactForm, 
+.testimonialCard {
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 20px var(--card-shadow);
+}
+
+/* Tablet devices */
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 95%;
+  }
+  
+  section {
+    padding: 60px 20px;
+  }
+}
+
+/* Mobile devices */
+@media screen and (max-width: 640px) {
+  html {
+    font-size: 90%;
+  }
+  
+  section {
+    padding: 40px 16px;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 85%;
+  }
 }

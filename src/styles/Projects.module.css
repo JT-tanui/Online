@@ -122,8 +122,46 @@
   color: white;
 }
 
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.filterButton {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterButton:hover {
+  background-color: var(--light-gray);
+}
+
+.filterButton.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
 @media screen and (max-width: 768px) {
   .container {
     grid-template-columns: 1fr;
+  }
+
+  .filterContainer {
+    gap: 0.3rem;
+  }
+  
+  .filterButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }

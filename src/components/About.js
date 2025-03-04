@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
+import Timeline from './Timeline';
 import styles from '../styles/About.module.css';
 import { personalInfo } from '../data/personalInfo';
-
-// Dynamic import for Timeline component
-const Timeline = dynamic(() => import('./Timeline'), {
-  ssr: false,
-  loading: () => <div>Loading timeline...</div>
-});
 
 const About = () => {
   const [isClient, setIsClient] = useState(false);
@@ -51,6 +45,7 @@ const About = () => {
               <p>{experience.period || ""}</p>
             </div>
           </div>
+          <Timeline />
         </div>
       </div>
       

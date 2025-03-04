@@ -6,18 +6,51 @@ import AnimatedSection from './AnimatedSection';
 
 const Projects = () => {
   const [isClient, setIsClient] = useState(false);
+  const [filteredProjects, setFilteredProjects] = useState([]);
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  // Extract unique categories from projects
+  const allCategories = ['all', ...new Set(projects?.flatMap(project => project.categories || []))];
 
   useEffect(() => {
     setIsClient(true);
+    setFilteredProjects(projects || []);
   }, []);
 
-  const projectsData = projects || [];
+  const filterProjects = (category) => {
+    setActiveFilter(category);
+    
+    if (category === 'all') {
+      setFilteredProjects(projects);
+      return;
+    }
+    
+    const filtered = projects.filter(project => 
+      project.categories && project.categories.includes(category)
+    );
+    
+    setFilteredProjects(filtered);
+  };
 
   return (
     <div className={styles.projects}>
       <h2 className={styles.sectionTitle}>My Projects</h2>
+      
+      {/* Project Filters */}
+      <div className={styles.filterContainer}>
+        {allCategories.map((category, index) => (
+          <button 
+            key={index} 
+            className={`${styles.filterButton} ${activeFilter === category ? styles.active : ''}`}
+            onClick={() => filterProjects(category)}
+          >
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </button>
+        ))}
+      </div>
+      
       <div className={styles.container}>
-        {projectsData.map((project, index) => (
+        {filteredProjects.map((project, index) => (
           <AnimatedSection 
             key={project.id} 
             className={styles.projectCard}

@@ -1,23 +1,23 @@
 export const testimonials = [
   {
     id: 1,
-    name: "Jane Doe",
-    role: "Project Manager at TechCorp",
-    image: "/images/testimonials/jane-doe.jpg", // Add a placeholder image
-    text: "Working with this developer was an absolute pleasure. Their attention to detail and ability to translate our requirements into a functional, beautiful website exceeded our expectations.",
+    name: "Jane Smith",
+    position: "Project Manager at Tech Solutions",
+    text: "Working with this developer was a pleasure. They consistently delivered high-quality code ahead of schedule and was proactive in identifying and solving problems before they became issues.",
+    image: "/images/testimonials/jane.jpg" // Add this to your public folder later
   },
   {
     id: 2,
-    name: "John Smith",
-    role: "Startup Founder",
-    image: "/images/testimonials/john-smith.jpg", // Add a placeholder image
-    text: "I was impressed by the quality of work and how quickly this developer understood our business needs. They delivered a solution that helped us increase user engagement by 40%.",
+    name: "Michael Johnson",
+    position: "CTO at StartupX",
+    text: "I was impressed by the clean, well-documented code and the attention to detail. This developer has a great eye for design and UX, making our product not just functional but also beautiful and user-friendly.",
+    image: "/images/testimonials/michael.jpg"
   },
   {
     id: 3,
-    name: "Emily Johnson",
-    role: "UI/UX Designer",
-    image: "/images/testimonials/emily-johnson.jpg", // Add a placeholder image
-    text: "It's rare to find a developer who cares so much about design details. The collaboration was seamless, and the final implementation matched our designs perfectly.",
+    name: "Sara Williams",
+    position: "Lead Developer at WebCraft",
+    text: "A true professional who knows how to work in a team. Great communication skills, excellent problem-solving abilities, and deep knowledge of modern web development practices. Would definitely work with them again.",
+    image: "/images/testimonials/sara.jpg"
   }
 ];

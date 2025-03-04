@@ -1,5 +1,7 @@
 # Portfolio Development Checklist
 
+- [x] Add social media links
+
 ## Project Setup
 - [x] Initialize Next.js project
 - [x] Create basic folder structure
@@ -17,6 +19,8 @@
 - [x] Skills Section
 - [x] Contact Section
 - [x] Footer
+- [x] Blog Section
+- [x] Skill Radar Chart
 
 ## Styling
 - [x] Define color scheme
@@ -24,6 +28,7 @@
 - [x] Create responsive layouts
 - [x] Design component-specific styles
 - [x] Implement dark/light mode (optional)
+- [x] Improve dark mode color contrast
 
 ## Interaction & Animation
 - [x] Add smooth scrolling
@@ -44,23 +49,26 @@
 - [x] Implement lazy loading
 - [x] Test for accessibility (WCAG)
 - [x] Ensure responsive design works on all devices
+- [x] Add SEO optimizations
 
 ## Deployment
-- [ ] Choose hosting platform (Vercel, Netlify, etc.)
+- [x] Choose hosting platform (Netlify)
 - [ ] Configure custom domain (if applicable)
-- [ ] Set up CI/CD pipeline
-- [ ] Test deployment
+- [x] Set up CI/CD pipeline through GitHub
+- [x] Set up analytics
 
 ## Final Checks
-- [ ] Cross-browser testing
-- [ ] Mobile responsiveness
-- [ ] Check all links work
-- [ ] Validate HTML and CSS
-- [ ] Test load speed
+- [x] Cross-browser testing
+- [x] Mobile responsiveness
+- [x] Check all links work
+- [x] Validate HTML and CSS
+- [x] Test load speed
 
 ## Future Enhancements (after initial release)
 - [x] Add dark mode toggle
 - [x] Implement animations for smoother transitions
-- [ ] Add blog section (optional)
-- [ ] Add testimonials section (optional)
-- [ ] Add analytics tracking
+- [x] Add skill visualization with radar chart
+- [x] Add testimonials section
+- [x] Add blog section
+- [x] Add project timeline 
+- [x] Add filterable projects by category

@@ -1,34 +1,27 @@
 import React from 'react';
 import styles from '../styles/Timeline.module.css';
 import { personalInfo } from '../data/personalInfo';
-import { motion } from 'framer-motion';
 
 const Timeline = () => {
-  const timeline = personalInfo?.timeline || [];
+  const { timeline } = personalInfo;
   
+  if (!timeline || timeline.length === 0) {
+    return null;
+  }
+
   return (
-    <div className={styles.timelineContainer}>
-      <h3 className={styles.timelineTitle}>My Journey</h3>
-      <div className={styles.timeline}>
-        {timeline.map((item, index) => (
-          <motion.div
-            key={item.id}
-            className={styles.timelineItem}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-          >
-            <div className={styles.timelineMarker}>
-              <div className={styles.timelinePoint}></div>
-            </div>
+    <div className={styles.timelineSection}>
+      <h2 className={styles.sectionTitle}>My Journey</h2>
+      <div className={styles.timelineContainer}>
+        {timeline.map((item) => (
+          <div key={item.id} className={styles.timelineItem}>
+            <div className={styles.timelineYear}>{item.year}</div>
             <div className={styles.timelineContent}>
-              <div className={styles.timelineYear}>{item.year}</div>
-              <h4 className={styles.timelineItemTitle}>{item.title}</h4>
-              <div className={styles.timelineCompany}>{item.company}</div>
-              <p className={styles.timelineDescription}>{item.description}</p>
+              <h3>{item.title}</h3>
+              <h4>{item.company}</h4>
+              <p>{item.description}</p>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

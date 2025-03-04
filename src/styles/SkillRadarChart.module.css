@@ -1,0 +1,92 @@
+.chartContainer {
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px var(--card-shadow);
+}
+
+.radarChartContainer {
+  background-color: var(--card-background);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.chartTitle {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+}
+
+.chart {
+  width: 100%;
+  height: 300px;
+  position: relative;
+}
+
+.chartPlaceholder {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--card-background);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.chartLoading {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--card-background);
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.radarChart {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.loadingChart {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .chartContainer {
+    padding: 1rem;
+    height: 350px;
+  }
+  
+  .chart {
+    height: 300px;
+  }
+
+  .radarChartContainer {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .chartContainer {
+    height: 300px;
+  }
+}

@@ -1,10 +1,8 @@
 import React from 'react';
-import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Header from '../components/Header';
-
-// Import Hero component normally since it's simpler
 import Hero from '../components/Hero';
+import SEO from '../components/SEO'; // Import SEO component
 
 // Use dynamic imports with no SSR for components with animations
 const About = dynamic(() => import('../components/About'), {
@@ -40,12 +38,7 @@ const Footer = dynamic(() => import('../components/Footer'), {
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>Your Name - Software Developer</title>
-        <meta name="description" content="Personal portfolio showcasing my software development projects and skills." />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SEO /> {/* Use SEO component instead of direct Head */}
       
       <Header />
       
