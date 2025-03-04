@@ -1,0 +1,16 @@
+# Set correct MIME types for all files
+/*.js
+  Content-Type: application/javascript
+
+/*.css
+  Content-Type: text/css
+
+/*.json
+  Content-Type: application/json
+
+/*.html
+  Content-Type: text/html; charset=utf-8
+
+# Allow Font Awesome
+/*
+  Access-Control-Allow-Origin: *

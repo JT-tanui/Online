@@ -5,16 +5,22 @@
 # Environment variables
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
-  NODE_VERSION = "20" # Updated to Node.js 20 for Next.js 15 compatibility
+  NODE_VERSION = "20" 
 
-# Redirect all paths to handle client-side routing
+# Better SPA redirect configuration
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Custom handling for static assets
+[[redirects]]
+  from = "/_next/static/*"
+  to = "/_next/static/:splat"
+  status = 200
   force = true
 
-# Add headers for security and caching
+# Add headers for security and caching but allow necessary resources
 [[headers]]
   for = "/*"
   [headers.values]
@@ -22,18 +28,21 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self' *.netlify.app; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.netlify.app; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: blob: *.netlify.app; font-src 'self' fonts.gstatic.com fonts.googleapis.com; connect-src 'self' *.netlify.app;"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' fonts.googleapis.com cdnjs.cloudflare.com; font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com; img-src 'self' data: blob:; connect-src 'self';"
 
-# Cache static assets
+# Proper MIME types for JavaScript files
 [[headers]]
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "application/javascript"
 
+# Proper MIME types for CSS files
 [[headers]]
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Content-Type = "text/css"
 
 [[headers]]
   for = "/images/*"
