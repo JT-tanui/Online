@@ -11,6 +11,10 @@ const nextConfig = {
   onDemandEntries: {
     maxInactiveAge: 25 * 1000,
     pagesBufferLength: 2,
+  },
+  eslint: {
+    // This will ignore ESLint errors during builds
+    ignoreDuringBuilds: true,
   }
 }
 

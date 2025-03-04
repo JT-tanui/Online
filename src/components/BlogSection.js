@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../styles/BlogSection.module.css';
 import { blogPosts } from '../data/blogPosts';
