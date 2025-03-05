@@ -1,58 +1,119 @@
 .skills {
-  padding: 80px 0;
+  padding: 4rem 0;
+  background-color: var(--bg-color);
 }
 
 .sectionTitle {
-  font-size: 2.8rem;
   text-align: center;
+  font-size: 2.5rem;
   margin-bottom: 3rem;
-  color: var(--secondary-color);
+  color: var(--text-color);
+  position: relative;
 }
 
 .sectionTitle::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -10px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 70px;
+  width: 80px;
   height: 4px;
   background-color: var(--primary-color);
+  transform: translateX(-50%);
   border-radius: 2px;
 }
 
 .container {
+  display: flex;
+  flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1rem;
+  gap: 2rem;
+}
+
+.skillsTabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.tabButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--card-bg);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  color: var(--text-muted);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tabButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tabButton.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.skillsVisual {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radarChart {
+  height: 400px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+}
+
+.skillsGrid {
+  flex: 2;
+  min-width: 300px;
 }
 
 .skillCategory {
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 5px 15px var(--card-shadow);
-  border: 1px solid var(--border-color);
+  margin-bottom: 2.5rem;
 }
 
 .skillCategory h3 {
-  margin-top: 0;
   margin-bottom: 1.5rem;
-  color: var(--secondary-color);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  padding-bottom: 0.5rem;
   position: relative;
-  padding-bottom: 0.75rem;
-  border-bottom: 2px solid var(--light-gray);
+  display: inline-block;
+}
+
+.skillCategory h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
 }
 
 .skillBars {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.5rem;
 }
 
 .skillItem {
-  margin-bottom: 0.5rem;
+  width: 100%;
 }
 
 .skillInfo {
@@ -67,8 +128,8 @@
 }
 
 .skillPercentage {
+  font-weight: 500;
   color: var(--primary-color);
-  font-weight: 600;
 }
 
 .progressBar {
@@ -80,243 +141,181 @@
 
 .progress {
   height: 100%;
-  background-color: var(--primary-color);
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
   border-radius: 4px;
-  transition: width 1s ease-out;
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.softSkills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.softSkillItem {
-  background-color: var(--light-gray);
-  color: var(--text-color);
-  padding: 0.5rem 1rem;
-  border-radius: 30px;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
-}
-
-.softSkillItem:hover {
-  background-color: var(--primary-color);
-  color: white;
-  transform: translateY(-3px);
-}
-
-@media screen and (max-width: 768px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-}
-
-.radarChartWrapper {
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 8px 30px var(--card-shadow);
-  margin-bottom: 3rem;
-  border: 1px solid var(--border-color);
-  height: 400px;
-}
-
-.skillsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-@media (min-width: 768px) {
-  .skillsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .skillsGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.chartLoading {
-  width: 100%;
-  max-width: 500px;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--card-background);
-  border-radius: 8px;
-  box-shadow: 0 4px 20px var(--shadow-color);
-  margin: 0 auto 3rem;
-}
-
-.loadingChart {
-  width: 100%;
-  height: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-style: italic;
-  color: var(--text-color);
-}
-
-@media (max-width: 768px) {
-  .sectionTitle {
-    font-size: 2rem;
-  }
-  
-  .skillsGrid {
-    grid-template-columns: 1fr;
-  }
-  
-  .radarChartWrapper {
-    height: 350px;
-    padding: 1.5rem;
-  }
-}
-
-/* Add these styles for skills graph and gallery */
-
-.skillsVisual {
-  margin-bottom: 3rem;
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 5px 15px var(--card-shadow);
-  border: 1px solid var(--border-color);
-}
-
-.skillsChart {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
-  height: 250px;
-  padding: 1rem 0;
-  margin-top: 1rem;
-  position: relative;
-}
-
-.skillsChart:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background-color: var(--border-color);
-}
-
-.skillBar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 55px;
-  animation: growUp 1.5s ease-out forwards;
-}
-
-@keyframes growUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.skillBarFill {
-  width: 100%;
-  border-radius: 6px 6px 0 0;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  transition: height 1.5s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.skillValue {
-  position: absolute;
-  top: -25px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--secondary-color);
-}
-
-.skillLabel {
-  margin-top: 10px;
-  font-size: 0.8rem;
-  text-align: center;
-  color: var(--text-color);
-  max-width: 70px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.progress.animate {
+  width: var(--data-level);
 }
 
 .skillsGallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
 }
 
 .skillCard {
-  background-color: var(--light-gray);
-  border-radius: 8px;
-  padding: 1.2rem 1rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .skillCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px var(--card-shadow);
-  background-color: var(--card-bg);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .skillCardIcon {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 0.75rem;
   color: var(--primary-color);
 }
 
 .skillCard h4 {
-  margin: 0 0 0.5rem;
-  font-size: 0.95rem;
-  color: var(--secondary-color);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
 }
 
 .skillRating {
+  font-size: 1rem;
   color: #ccc;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
 }
 
 .skillRating .filled {
-  color: var(--primary-color);
+  color: var(--accent-color, #ffb400);
 }
 
-/* Add these media queries for responsive layout */
+.softSkills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.softSkillItem {
+  background-color: var(--card-bg);
+  padding: 0.75rem 1.25rem;
+  border-radius: 30px;
+  font-weight: 500;
+  color: var(--text-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.softSkillItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.noData {
+  color: var(--text-muted);
+  text-align: center;
+  margin: 2rem 0;
+  font-style: italic;
+}
+
+/* New compact style for technical skills */
+.skillBarsCompact {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.skillBarsCompact::-webkit-scrollbar {
+  width: 6px;
+}
+
+.skillBarsCompact::-webkit-scrollbar-track {
+  background: var(--light-gray);
+  border-radius: 10px;
+}
+
+.skillBarsCompact::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 10px;
+}
+
+.skillInfoCompact {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.progressBarCompact {
+  height: 6px;
+  background-color: var(--light-gray);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+/* Make sure animation works properly */
+.progress {
+  height: 100%;
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  border-radius: 4px;
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.progress.animate {
+  width: var(--skill-width);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .skillsChart {
-    height: 200px;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding-bottom: 1.5rem;
+  .container {
+    flex-direction: column;
   }
   
-  .skillBar {
-    min-width: 50px;
-    margin: 0 10px;
+  .skillsVisual {
+    order: 2;
+    margin-top: 2rem;
+  }
+  
+  .skillsGrid {
+    order: 1;
   }
   
   .skillsGallery {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+
+  .skillBarsCompact {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skillsTabs {
+    flex-wrap: wrap;
+  }
+  
+  .tabButton {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .radarChart {
+    height: 300px;
+  }
+
+  .skillBarsCompact {
+    grid-template-columns: 1fr;
+    max-height: 250px;
   }
 }

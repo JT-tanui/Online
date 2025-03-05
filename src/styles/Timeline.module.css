@@ -6,7 +6,7 @@
 
 .timelineTitle {
   text-align: center;
-  margin-bottom: 30px;
+  /* margin-bottom: 10px; */
   font-size: 1.8rem;
   color: var(--secondary-color);
 }
@@ -96,6 +96,14 @@
   margin: 0;
 }
 
+.timelineDescription {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  opacity: 0.85;
+}
+
 /* Mobile responsiveness */
 @media screen and (max-width: 768px) {
   .timelineContent::after {
@@ -123,5 +131,19 @@
   
   .timelineItem:nth-child(even) .timelineBadge {
     left: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .timelineDescription {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .timelineItem:hover .timelineDescription {
+    -webkit-line-clamp: initial;
   }
 }

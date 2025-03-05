@@ -1,68 +1,84 @@
 .hero {
-  min-height: calc(100vh - 70px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
+  position: relative;
+  overflow: hidden;
   padding: 0 1rem;
 }
 
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: row;  
-  align-items: center;
-  justify-content: space-between;
+  padding: 0 2rem;
   gap: 2rem;
 }
 
 .content {
   flex: 1;
+  max-width: 600px;
 }
 
 .title {
-  font-size: 3rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  color: var(--text-color);
 }
 
 .name {
   color: var(--primary-color);
+  position: relative;
+  display: inline-block;
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  color: var(--secondary-color);
+  font-size: 1.8rem;
   margin-bottom: 1.5rem;
+  color: var(--text-muted);
+  font-weight: 500;
 }
 
 .description {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
+  color: var(--text-muted);
   max-width: 600px;
 }
 
 .actions {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .primaryButton, .secondaryButton {
-  padding: 0.75rem 1.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
   font-size: 1rem;
-  font-weight: 500;
-  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .primaryButton {
   background-color: var(--primary-color);
-  color: white;
+  color: #fff;
+  border: none;
 }
 
 .primaryButton:hover {
-  background-color: #0051cc;
+  background-color: var(--primary-dark);
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
@@ -70,70 +86,122 @@
 .secondaryButton {
   background-color: transparent;
   color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  border: 2px solid var(--primary-color);
 }
 
 .secondaryButton:hover {
-  background-color: rgba(0, 112, 243, 0.1);
+  background-color: rgba(var(--primary-rgb), 0.1);
   transform: translateY(-3px);
 }
 
 .imageContainer {
   flex: 1;
+  max-width: 400px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  padding-left: 2rem;
 }
 
 .imagePlaceholder {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-color: var(--light-gray);
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1), rgba(var(--secondary-rgb), 0.15));
+  border-radius: 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  color: var(--text-color);
+  justify-content: center;
   font-weight: 500;
+  color: var(--text-muted);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.profileImage {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .socialLinks {
   display: flex;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .socialLink {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background-color: var(--light-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-color);
   transition: all 0.3s ease;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .socialLink:hover {
   background-color: var(--primary-color);
-  color: white;
-  transform: translateY(-3px) rotate(8deg);
+  color: #fff;
+  transform: translateY(-5px);
 }
 
-@media screen and (max-width: 768px) {
+/* Tablet responsiveness */
+@media (max-width: 992px) {
   .container {
-    flex-direction: column-reverse;
-    text-align: center;
+    padding: 0 1.5rem;
   }
   
   .title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1.6rem;
   }
   
   .description {
-    margin: 1.5rem auto;
+    font-size: 1rem;
+  }
+  
+  .imageContainer {
+    padding-left: 1.5rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 6rem 0 4rem;
+  }
+  
+  .container {
+    flex-direction: column-reverse; /* This makes image appear first on mobile */
+    padding: 0 1.2rem;
+  }
+  
+  .content {
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .title {
+    font-size: 2.3rem;
+  }
+  
+  .subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
   
   .actions {
@@ -141,11 +209,84 @@
   }
   
   .imageContainer {
-    margin-bottom: 2rem;
+    max-width: 280px;
+    padding-left: 0;
+    margin: 0 auto;
+    margin-bottom: 2rem; /* Add space between image and text */
   }
   
-  .imagePlaceholder {
-    width: 200px;
-    height: 200px;
+  .socialLinks {
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Small mobile responsiveness */
+@media (max-width: 480px) {
+  .hero {
+    padding: 5rem 0 3rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    margin-bottom: 0.7rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+  }
+  
+  .primaryButton, .secondaryButton {
+    width: 100%;
+    padding: 0.7rem 1rem;
+  }
+  
+  .imageContainer {
+    max-width: 220px;
+  }
+  
+  .socialLinks {
+    gap: 0.8rem;
+  }
+  
+  .socialLink {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}
+
+/* Very small mobile devices */
+@media (max-width: 360px) {
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+  
+  .imageContainer {
+    max-width: 180px;
   }
 }

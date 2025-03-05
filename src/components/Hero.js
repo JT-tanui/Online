@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import styles from '../styles/Hero.module.css';
 import { personalInfo } from '../data/personalInfo';
@@ -123,15 +124,26 @@ const Hero = () => {
             </Link>
           </motion.div>
         </motion.div>
-        <motion.div 
+          <motion.div 
           className={styles.imageContainer}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className={styles.imagePlaceholder}>
-            <p>Your Image</p>
-          </div>
+            {personalInfo.avatarUrl ? (
+              <Image 
+                src={personalInfo.avatarUrl} 
+                alt={`${personalInfo.name}'s portrait`}
+                className={styles.profileImage}
+                width={500}
+                height={500}
+                priority
+              />
+            ) : (
+              <div className={styles.avatarPlaceholder}>
+                <i className="fas fa-user"></i>
+              </div>
+            )}
         </motion.div>
       </div>
     </div>
