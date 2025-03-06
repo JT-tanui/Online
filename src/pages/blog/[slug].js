@@ -124,9 +124,13 @@ const BlogPostPage = () => {
   return (
     <>
       <SEO 
-        title={`${post.title} | Blog`}
+        title={post.title}
         description={post.excerpt}
-        image={post.image}
+        ogImage={post.image || undefined}
+        article={true}
+        publishedTime={post.date}
+        modifiedTime={post.updatedAt || post.date}
+        keywords={post.tags?.join(', ')}
       />
       
       <Header />

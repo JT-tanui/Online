@@ -4,6 +4,9 @@ export const personalInfo = {
   email: "jobtanui21@gmail.com",
   location: "Nairobi, KE",
   phone: "+254 707 696 045",
+  avatarUrl: "/images/your-profile-photo.jpg",
+  currentCompany: "***",
+  themeColor: "#4A76B8", // Your primary brand color
   
   introduction: "Software Engineer with expertise in full-stack development, cloud computing, and DevOps. Passionate about building scalable, high-performance applications and delivering impactful digital solutions.",
   
@@ -75,6 +78,18 @@ export const personalInfo = {
     credly: "https://www.credly.com/users/job-busienei",
     wakatime: "https://wakatime.com/@Busienei"
   },
+
+  skills: [
+    {
+      category: "Frontend",
+      skills: ["JavaScript", "React", "Next.js", "Flutter"]
+    },
+    {
+      category: "Backend",
+      skills: ["Node.js", "Express", "MongoDB", "SQL", "API Development"]
+    },
+    // Add more categories as needed
+  ],
 
   timeline: [
     {
