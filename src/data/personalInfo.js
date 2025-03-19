@@ -4,7 +4,7 @@ export const personalInfo = {
   email: "jobtanui21@gmail.com",
   location: "Nairobi, KE",
   phone: "+254 707 696 045",
-  avatarUrl: "/images/your-profile-photo.jpg",
+  avatarUrl: "/images/profile.jpg",
   currentCompany: "***",
   themeColor: "#4A76B8", // Your primary brand color
   

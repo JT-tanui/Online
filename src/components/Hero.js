@@ -119,7 +119,12 @@ const Hero = () => {
             <Link href="#projects" className={styles.primaryButton}>
               View My Work
             </Link>
-            <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer" className={styles.secondaryButton}>
+            <Link 
+              href="/Docs/Job Kiprotich Busiene.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.secondaryButton}
+            >
               Download Resume
             </Link>
           </motion.div>
