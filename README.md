@@ -13,7 +13,7 @@ A modern, responsive portfolio website built with Next.js to showcase projects, 
 
 ## 🌐 Live Demo
 
-[View the live site](https://your-portfolio-url.netlify.app)
+[View the live site](https://busienei-portfolio.netlify.app/)
 
 ## ✨ Features
 
