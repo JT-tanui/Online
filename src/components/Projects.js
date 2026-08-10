@@ -22,12 +22,7 @@ const Projects = () => {
     return new Date(b.date) - new Date(a.date);
   });
 
-  const latestProjects = allProjects.filter(project => 
-    project.featured || 
-    project.title.includes("SwiftX") || 
-    project.title.includes("Coding Assistant") || 
-    project.title.includes("Point of Sale")
-  );
+  const latestProjects = allProjects.filter(project => project.featured);
 
   // Normalize project categories to handle AI case consistently
   const normalizeProjects = (projects) => {
@@ -49,7 +44,7 @@ const Projects = () => {
     } else if (activeTab === 'latest') {
       // If in latest mode and not showing all, limit to 3 projects
       const filteredLatest = filterProjectsByCategory(normalizedLatestProjects, filter);
-      setVisibleProjects(showAllLatest ? filteredLatest : filteredLatest.slice(0, 3));
+      setVisibleProjects(showAllLatest ? filteredLatest : filteredLatest.slice(0, 4));
     } else if (activeTab === 'completed') {
       setVisibleProjects(filterProjectsByCategory(
         projects.completed.map(project => ({...project, status: 'completed'})), 
@@ -189,9 +184,20 @@ const Projects = () => {
             onClick={(e) => toggleProject(project.id, e)}
           >
             <div className={styles.projectImageContainer}>
-              <div className={styles.projectImage}
-                style={{ backgroundImage: `url(${project.image})` }}>
-              </div>
+              {project.image ? (
+                <div
+                  className={styles.projectImage}
+                  style={{ backgroundImage: `url(${project.image})` }}
+                ></div>
+              ) : (
+                <div
+                  className={styles.projectMonogram}
+                  style={{ '--accent': project.accent || 'var(--primary-color)' }}
+                  aria-hidden="true"
+                >
+                  {project.title.charAt(0)}
+                </div>
+              )}
               {project.status === 'inProgress' && (
                 <div className={styles.statusBadge} aria-label="Project in progress">In Progress</div>
               )}
@@ -222,18 +228,23 @@ const Projects = () => {
                   </a>
                 )}
                 {project.liveUrl && project.liveUrl.trim() !== "" && (
-                  <a 
-                    href={project.liveUrl} 
-                    className={styles.projectLink} 
-                    target="_blank" 
+                  <a
+                    href={project.liveUrl}
+                    className={styles.projectLink}
+                    target="_blank"
                     rel="noopener noreferrer"
                     onClick={e => e.stopPropagation()}
                   >
-                    <i className="fas fa-external-link-alt"></i> Live Demo
+                    <i className="fas fa-external-link-alt"></i> Visit site
                   </a>
                 )}
+                {!project.githubUrl && project.privateRepo && (
+                  <span className={styles.projectLinkMuted}>
+                    <i className="fas fa-lock"></i> Private repository
+                  </span>
+                )}
               </div>
-              
+
               {expandedProject === project.id && (
                 <div className={styles.projectDetails}>
                   <h4>Features</h4>
@@ -242,6 +253,12 @@ const Projects = () => {
                       <li key={index}>{feature}</li>
                     ))}
                   </ul>
+                  {project.challenge && (
+                    <>
+                      <h4>What was hard about this</h4>
+                      <p className={styles.projectChallenge}>{project.challenge}</p>
+                    </>
+                  )}
                 </div>
               )}
               
@@ -256,7 +273,7 @@ const Projects = () => {
         ))}
       </div>
 
-      {activeTab === 'latest' && !showAllLatest && latestProjects.length > 3 && (
+      {activeTab === 'latest' && !showAllLatest && latestProjects.length > 4 && (
         <div className={styles.showMoreContainer}>
           <button 
             className={styles.showMoreButton}

@@ -138,10 +138,6 @@ const Contact = () => {
                     <i className="fab fa-linkedin-in"></i>
                     <span>LinkedIn</span>
                   </a>
-                  <a href={personalInfo?.socials?.twitter || '#'} target="_blank" rel="noopener noreferrer">
-                    <i className="fab fa-twitter"></i>
-                    <span>Twitter</span>
-                  </a>
                   {personalInfo?.socials?.credly && (
                     <a href={personalInfo.socials.credly} target="_blank" rel="noopener noreferrer">
                       <i className="fas fa-certificate"></i>

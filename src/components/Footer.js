@@ -68,7 +68,6 @@ const Footer = () => {
             <li className={styles.navItem}><Link href="/#about" className={styles.navLink}>About</Link></li>
             <li className={styles.navItem}><Link href="/#projects" className={styles.navLink}>Projects</Link></li>
             <li className={styles.navItem}><Link href="/#skills" className={styles.navLink}>Skills</Link></li>
-            <li className={styles.navItem}><Link href="/#testimonials" className={styles.navLink}>Testimonials</Link></li>
             <li className={styles.navItem}><Link href="/#contact" className={styles.navLink}>Contact</Link></li>
           </ul>
         </div>
@@ -83,7 +82,7 @@ const Footer = () => {
               <strong>Location:</strong> {personalInfo?.location || 'City, Country'}
             </li>
             <li className={styles.navItem}>
-              <strong>Available for:</strong> Freelance, Full-time positions
+              <strong>Open to:</strong> Remote roles
             </li>
           </ul>
         </div>

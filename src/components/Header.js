@@ -61,7 +61,6 @@ const Header = () => {
                   <li><a href="#about">About</a></li>
                   <li><a href="#projects">Projects</a></li>
                   <li><a href="#skills">Skills</a></li>
-                  <li><a href="#testimonials">Testimonials</a></li>
                   <li><a href="#contact">Contact</a></li>
                 </>
               ) : (
@@ -70,11 +69,9 @@ const Header = () => {
                   <li><Link href="/#about">About</Link></li>
                   <li><Link href="/#projects">Projects</Link></li>
                   <li><Link href="/#skills">Skills</Link></li>
-                  <li><Link href="/#testimonials">Testimonials</Link></li>
                   <li><Link href="/#contact">Contact</Link></li>
                 </>
               )}
-              <li><Link href="/blog" className={router.pathname === '/blog' ? styles.active : ''}>Blog</Link></li>
             </ul>
           </nav>
           
@@ -124,7 +121,6 @@ const Header = () => {
                         <li><a href="#about" onClick={handleMenuItemClick}><i className="fas fa-user"></i> About</a></li>
                         <li><a href="#projects" onClick={handleMenuItemClick}><i className="fas fa-code"></i> Projects</a></li>
                         <li><a href="#skills" onClick={handleMenuItemClick}><i className="fas fa-tools"></i> Skills</a></li>
-                        <li><a href="#testimonials" onClick={handleMenuItemClick}><i className="fas fa-quote-right"></i> Testimonials</a></li>
                         <li><a href="#contact" onClick={handleMenuItemClick}><i className="fas fa-envelope"></i> Contact</a></li>
                       </>
                     ) : (
@@ -133,15 +129,9 @@ const Header = () => {
                         <li><Link href="/#about" onClick={handleMenuItemClick}><i className="fas fa-user"></i> About</Link></li>
                         <li><Link href="/#projects" onClick={handleMenuItemClick}><i className="fas fa-code"></i> Projects</Link></li>
                         <li><Link href="/#skills" onClick={handleMenuItemClick}><i className="fas fa-tools"></i> Skills</Link></li>
-                        <li><Link href="/#testimonials" onClick={handleMenuItemClick}><i className="fas fa-quote-right"></i> Testimonials</Link></li>
                         <li><Link href="/#contact" onClick={handleMenuItemClick}><i className="fas fa-envelope"></i> Contact</Link></li>
                       </>
                     )}
-                    <li className={styles.blogNavItem}>
-                      <Link href="/blog" onClick={handleMenuItemClick} className={router.pathname === '/blog' ? styles.active : ''}>
-                        <i className="fas fa-rss"></i> Blog
-                      </Link>
-                    </li>
                   </ul>
                 </nav>
                 

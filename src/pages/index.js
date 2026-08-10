@@ -3,8 +3,6 @@ import dynamic from 'next/dynamic';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import SEO from '../components/SEO'; // Import SEO component
-import Testimonials from '../components/Testimonials';
-// import ThemeDebug from '../components/ThemeDebug'; // Add to a page temporarily
 
 // Use dynamic imports with no SSR for components with animations
 const About = dynamic(() => import('../components/About'), {
@@ -57,17 +55,12 @@ export default function Home() {
           <Skills />
         </section>
         
-        <section id="testimonials">
-          <Testimonials />
-        </section>
-        
         <section id="contact">
           <Contact />
         </section>
       </main>
       
       <Footer />
-      {/* <ThemeDebug /> Add to a page temporarily */}
     </>
   );
 }

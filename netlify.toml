@@ -7,18 +7,10 @@
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_VERSION = "20" 
 
-# Better SPA redirect configuration
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-# Custom handling for static assets
-[[redirects]]
-  from = "/_next/static/*"
-  to = "/_next/static/:splat"
-  status = 200
-  force = true
+# No catch-all rewrite. The previous `/* -> /index.html 200` rule meant every
+# unknown URL answered 200 with the homepage, which search engines read as a soft
+# 404 and which dilutes indexing. Next's static export emits a real 404.html and
+# Netlify serves it automatically.
 
 # Add headers for security and caching but allow necessary resources
 [[headers]]

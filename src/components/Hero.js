@@ -26,6 +26,16 @@ const Hero = () => {
           >
             {personalInfo.title}
           </motion.h2>
+          {personalInfo.headline && (
+            <motion.p
+              className={styles.headline}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+            >
+              {personalInfo.headline}
+            </motion.p>
+          )}
           <motion.p 
             className={styles.description}
             initial={{ opacity: 0 }}
@@ -119,13 +129,8 @@ const Hero = () => {
             <Link href="#projects" className={styles.primaryButton}>
               View My Work
             </Link>
-            <Link 
-              href="/Docs/Job Kiprotich Busiene.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className={styles.secondaryButton}
-            >
-              Download Resume
+            <Link href="#contact" className={styles.secondaryButton}>
+              Get in Touch
             </Link>
           </motion.div>
         </motion.div>

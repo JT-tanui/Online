@@ -54,36 +54,20 @@ const Timeline = () => {
     });
   }
 
-  // Custom ordering instead of relying solely on date sorting
-  const orderedEvents = [...timelineEvents];
-  // Sort first by category (education first, then experience)
-  orderedEvents.sort((a, b) => {
-    // If both are the same type, use year sorting
-    if (a.type === b.type) {
-      const yearA = a.year.split('-')[1] || a.year.split('-')[0];
-      const yearB = b.year.split('-')[1] || b.year.split('-')[0];
-      return parseInt(yearB) - parseInt(yearA);
-    }
-    // Otherwise, education comes before experience
-    return a.type === 'education' ? -1 : 1;
-  });
+  // Reverse-chronological by the end of each period. An ongoing role
+  // ("Present") sorts to the top. Ties keep experience above education so a
+  // job and a certificate from the same year read in the useful order.
+  const endYear = (period = '') => {
+    if (/present|current/i.test(period)) return 9999;
+    const years = period.match(/\d{4}/g);
+    return years ? parseInt(years[years.length - 1], 10) : 0;
+  };
 
-  // Custom order for specific items
-  const finalEvents = orderedEvents.sort((a, b) => {
-    // Diploma in Computer Programming always first
-    if (a.title.includes("Diploma in Computer Programming")) return -1;
-    if (b.title.includes("Diploma in Computer Programming")) return 1;
-    
-    // Google Developer Student Club comes next
-    if (a.title.includes("Google Developer Student Club")) return -1;
-    if (b.title.includes("Google Developer Student Club")) return 1;
-    
-    // ICT Internship comes next
-    if (a.title.includes("ICT & Telecommunication Division Intern")) return -1;
-    if (b.title.includes("ICT & Telecommunication Division Intern")) return 1;
-    
-    // Default to original sorting
-    return 0;
+  const finalEvents = [...timelineEvents].sort((a, b) => {
+    const diff = endYear(b.year) - endYear(a.year);
+    if (diff !== 0) return diff;
+    if (a.type === b.type) return 0;
+    return a.type === 'experience' ? -1 : 1;
   });
 
   return (

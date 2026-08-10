@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import Image from 'next/image';
+import Image from 'next/image';
 import Timeline from './Timeline';
 import styles from '../styles/About.module.css';
 import { personalInfo } from '../data/personalInfo';
@@ -20,9 +20,19 @@ const About = () => {
       <h2 className={styles.sectionTitle}>About Me</h2>
       <div className={styles.container}>
         <div className={styles.imageContainer}>
-          <div className={styles.imagePlaceholder}>
-            <p>Profile Image</p>
-          </div>
+          {personalInfo?.avatarUrl ? (
+            <Image
+              src={personalInfo.avatarUrl}
+              alt={`${personalInfo.name}, software engineer`}
+              width={500}
+              height={500}
+              className={styles.aboutImage}
+            />
+          ) : (
+            <div className={styles.imagePlaceholder}>
+              <p>{personalInfo?.name}</p>
+            </div>
+          )}
         </div>
         <div className={styles.content}>
           <p className={styles.intro}>
@@ -37,12 +47,18 @@ const About = () => {
               <p>{education.degree || ""}</p>
               <p>{education.institution || ""}</p>
               <p>{education.period || ""}</p>
+              {education.description && (
+                <p className={styles.detailNote}>{education.description}</p>
+              )}
             </div>
             <div className={styles.detailItem}>
               <h3>Experience</h3>
               <p>{experience.position || ""}</p>
               <p>{experience.company || ""}</p>
               <p>{experience.period || ""}</p>
+              {experience.description && (
+                <p className={styles.detailNote}>{experience.description}</p>
+              )}
             </div>
           </div>
         </div>

@@ -109,3 +109,18 @@
     gap: 1.5rem;
   }
 }
+.aboutImage {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+}
+
+.detailNote {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--footer-text);
+}
