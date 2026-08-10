@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Timeline from './Timeline';
 import styles from '../styles/About.module.css';
 import { personalInfo } from '../data/personalInfo';
 
 const About = () => {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
   // Make sure personalInfo exists before accessing its properties
   const education = personalInfo?.education || {};
   const experience = personalInfo?.experience || {};
@@ -64,8 +58,9 @@ const About = () => {
         </div>
       </div>
       
-      {/* Add timeline section - only render once when client-side */}
-      {isClient && <Timeline />}
+      {/* Rendered server-side: the education equivalency and work history are
+          the parts a crawler most needs to see. */}
+      <Timeline />
     </div>
   );
 };

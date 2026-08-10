@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../styles/MoreWork.module.css';
 import { moreWork } from '../data/moreWork';
 import AnimatedSection from './AnimatedSection';
@@ -9,13 +9,11 @@ const WHERE = {
   local: { icon: 'fas fa-hard-drive', label: 'On request' },
 };
 
+// Every group renders. A "show more" toggle would keep most of this out of the
+// exported HTML, and this list is exactly what an answer engine should see when
+// asked what he has built.
 const MoreWork = () => {
-  const [expanded, setExpanded] = useState(false);
   const groups = moreWork.groups || [];
-  const visible = expanded ? groups : groups.slice(0, 2);
-  const hiddenCount = groups
-    .slice(2)
-    .reduce((total, group) => total + group.items.length, 0);
 
   return (
     <AnimatedSection className={styles.moreWork} id="more-work">
@@ -23,7 +21,7 @@ const MoreWork = () => {
       <p className={styles.intro}>{moreWork.intro}</p>
 
       <div className={styles.groups}>
-        {visible.map((group) => (
+        {groups.map((group) => (
           <div key={group.title} className={styles.group}>
             <h3 className={styles.groupTitle}>
               {group.title}
@@ -66,14 +64,6 @@ const MoreWork = () => {
           </div>
         ))}
       </div>
-
-      {!expanded && hiddenCount > 0 && (
-        <div className={styles.actions}>
-          <button className={styles.showMore} onClick={() => setExpanded(true)}>
-            Show {hiddenCount} more <i className="fas fa-chevron-down"></i>
-          </button>
-        </div>
-      )}
 
       {moreWork.footer && (
         <div className={styles.actions}>

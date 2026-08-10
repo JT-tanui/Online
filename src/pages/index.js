@@ -1,61 +1,40 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import SEO from '../components/SEO'; // Import SEO component
+import SEO from '../components/SEO';
+import About from '../components/About';
+import Projects from '../components/Projects';
+import MoreWork from '../components/MoreWork';
+import Skills from '../components/Skills';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
-// Use dynamic imports with no SSR for components with animations
-const About = dynamic(() => import('../components/About'), {
-  ssr: false,
-  loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
-});
-
-const Projects = dynamic(() => import('../components/Projects'), {
-  ssr: false,
-  loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
-});
-
-const MoreWork = dynamic(() => import('../components/MoreWork'), {
-  ssr: false,
-  loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>Loading...</div>
-});
-
-const Skills = dynamic(() => import('../components/Skills'), {
-  ssr: false,
-  loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
-});
-
-const Contact = dynamic(() => import('../components/Contact'), {
-  ssr: false,
-  loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
-});
-
-const Footer = dynamic(() => import('../components/Footer'), {
-  ssr: false,
-  loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>Loading...</div>
-});
+// These were previously loaded with `dynamic(..., { ssr: false })`, which on a
+// static export meant none of them existed in the exported HTML — the entire
+// page below the hero was JavaScript-only. Search engines that render JS
+// eventually caught up; AI crawlers and answer engines that fetch raw HTML saw
+// a near-empty page. Static imports put the real content in the document.
 
 export default function Home() {
-  console.log('Rendering Home page');
   return (
     <>
-      <SEO /> {/* Use SEO component instead of direct Head */}
-      
+      <SEO />
+
       <Header />
-      
+
       <main>
         <section id="home">
           <Hero />
         </section>
-        
+
         <section id="about">
           <About />
         </section>
-        
+
         <section id="projects">
           <Projects />
         </section>
-        
+
         <section id="more-work">
           <MoreWork />
         </section>
@@ -63,12 +42,12 @@ export default function Home() {
         <section id="skills">
           <Skills />
         </section>
-        
+
         <section id="contact">
           <Contact />
         </section>
       </main>
-      
+
       <Footer />
     </>
   );

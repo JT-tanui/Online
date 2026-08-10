@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { projects } from '../data/projects';
 import styles from '../styles/Projects.module.css';
 import AnimatedSection from './AnimatedSection';
@@ -11,7 +11,6 @@ const AVAILABILITY = {
 
 const Projects = () => {
   const [filter, setFilter] = useState('all');
-  const [visibleProjects, setVisibleProjects] = useState([]);
   const [activeTab, setActiveTab] = useState('all');
   const [expandedProject, setExpandedProject] = useState(null);
 
@@ -37,7 +36,10 @@ const Projects = () => {
     return normalized.filter((p) => p.categories.some((c) => c.toLowerCase() === lower));
   };
 
-  useEffect(() => {
+  // Derived during render, not in an effect. Effects do not run during static
+  // export, so computing this in useEffect left the exported HTML with zero
+  // project cards — invisible to any crawler that does not execute JavaScript.
+  const visibleProjects = useMemo(() => {
     const source =
       activeTab === 'all'
         ? allProjects
@@ -47,7 +49,7 @@ const Projects = () => {
         ? allProjects.filter((p) => p.kind === 'personal')
         : allProjects.filter((p) => p.status === 'inProgress');
 
-    setVisibleProjects(byCategory(source, filter));
+    return byCategory(source, filter);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, activeTab]);
 
@@ -94,7 +96,7 @@ const Projects = () => {
   return (
     <AnimatedSection className={styles.projects} id="projects">
       <div className={styles.projectsBanner}>
-        <div className={styles.bannerContennt}>
+        <div className={styles.bannerContent}>
           <h2 className={styles.sectionTitle}>Projects</h2>
         </div>
       </div>
