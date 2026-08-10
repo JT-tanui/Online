@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { personalInfo } from '../data/personalInfo';
 import { projects } from '../data/projects';
+import { moreWork } from '../data/moreWork';
 
 const SEO = ({
   title,
@@ -41,6 +42,17 @@ const SEO = ({
     ...(projects?.completed || []),
     ...(projects?.inProgress || []),
   ];
+
+  // The long tail counts too — an answer engine asked "what has he built?"
+  // should see the full body of work, not just the ten headline entries.
+  const moreWorkItems = (moreWork?.groups || []).flatMap((group) =>
+    group.items.map((item) => ({
+      title: item.name,
+      description: item.note,
+      technologies: item.stack ? item.stack.split(' · ') : [],
+      liveUrl: item.link || '',
+    }))
+  );
 
   const sameAs = [
     personalInfo.socials?.github,
@@ -148,8 +160,8 @@ const SEO = ({
         '@type': 'ItemList',
         '@id': `${baseUrl}/#projects`,
         name: `Projects by ${personalInfo.name}`,
-        numberOfItems: allProjects.length,
-        itemListElement: allProjects.map((project, index) => ({
+        numberOfItems: allProjects.length + moreWorkItems.length,
+        itemListElement: [...allProjects, ...moreWorkItems].map((project, index) => ({
           '@type': 'ListItem',
           position: index + 1,
           item: {

@@ -320,107 +320,138 @@
   }
 }
 /* ---------------------------------------------------------------
-   Skills — evidence-based layout (replaces the radar chart and the
-   self-assessed percentage bars).
+   Evidence-based skills: same card and tab language as the rest of
+   the site, with the codebase behind each skill in place of a
+   self-assessed percentage.
    --------------------------------------------------------------- */
 
 .skillsNote {
-  max-width: 700px;
-  margin: -1.5rem auto 2.5rem;
+  max-width: 720px;
+  margin: -1.5rem auto 2.25rem;
   padding: 0 1rem;
   text-align: center;
   color: var(--footer-text);
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.skillGroups {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+.skillsTabs {
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  padding: 0 1rem;
+}
+
+.skillsTabs .tabButton {
+  font-size: 0.92rem;
+  padding: 0.6rem 1.1rem;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.tabCount {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background-color: var(--light-gray);
+  color: var(--footer-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.tabButton.active .tabCount {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+.skillsGallery {
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+  gap: 1.25rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.skillGroup {
-  background-color: var(--card-bg);
+.skillCard {
+  text-align: left;
+  padding: 1.35rem 1.25rem;
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 1px 3px var(--card-shadow);
+  animation: skillIn 0.32s ease both;
 }
 
-.groupTitle {
-  font-size: 1.05rem;
+@keyframes skillIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skillCard { animation: none; }
+  .skillCard:hover { transform: none; }
+}
+
+.skillCard .skillCardIcon {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.skillCardName {
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-color);
-  margin: 0 0 1rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 2px solid var(--primary-color);
-  display: inline-block;
+  margin: 0 0 0.35rem;
 }
 
-.skillList {
-  list-style: none;
+.skillCardEvidence {
   margin: 0;
-  padding: 0;
-}
-
-.skillEntry {
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.skillEntry:last-child {
-  border-bottom: none;
-}
-
-.skillLabel {
-  display: block;
-  font-weight: 500;
-  color: var(--text-color);
-  font-size: 0.98rem;
-}
-
-.skillEvidence {
-  display: block;
-  margin-top: 0.15rem;
-  color: var(--footer-text);
   font-size: 0.82rem;
-  line-height: 1.45;
+  line-height: 1.5;
+  color: var(--footer-text);
 }
 
 .practicesBlock {
   max-width: 1200px;
-  margin: 2.5rem auto 0;
+  margin: 3rem auto 0;
   padding: 0 1rem;
   text-align: center;
+}
+
+.practicesTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 1rem;
 }
 
 .practices {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.6rem;
-  margin-top: 1rem;
+  gap: 0.65rem;
 }
 
 .practiceItem {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   color: var(--text-color);
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.15rem;
   border-radius: 999px;
   font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 @media (max-width: 600px) {
-  .skillGroups {
-    grid-template-columns: 1fr;
+  .skillsGallery {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
   }
 
-  .skillGroup {
-    padding: 1.25rem;
+  .skillCard {
+    padding: 1.1rem 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .skillsGallery {
+    grid-template-columns: 1fr;
   }
 }

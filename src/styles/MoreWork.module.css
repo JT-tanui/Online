@@ -1,0 +1,204 @@
+.moreWork {
+  padding: 4rem 0;
+  background-color: var(--background-color);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--text-color);
+  position: relative;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.intro {
+  max-width: 760px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1rem;
+  text-align: center;
+  line-height: 1.7;
+  color: var(--footer-text);
+}
+
+.groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.group {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px var(--card-shadow);
+}
+
+.groupTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.groupCount {
+  background-color: var(--light-gray);
+  color: var(--footer-text);
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item + .item {
+  border-top: 1px solid var(--border-color);
+}
+
+.itemLink,
+.itemStatic {
+  display: block;
+  padding: 0.75rem 0.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s ease;
+}
+
+.itemLink:hover {
+  background-color: var(--light-gray);
+}
+
+.itemHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.itemName {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 0.98rem;
+}
+
+.itemLink:hover .itemName {
+  color: var(--primary-color);
+}
+
+.where {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.public {
+  background-color: rgba(52, 199, 89, 0.14);
+  color: #2a7d46;
+}
+
+.private {
+  background-color: rgba(120, 120, 128, 0.16);
+  color: var(--footer-text);
+}
+
+.local {
+  background-color: rgba(0, 102, 204, 0.12);
+  color: var(--primary-color);
+}
+
+.itemNote {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--footer-text);
+}
+
+.itemStack {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  color: var(--primary-color);
+  opacity: 0.85;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.showMore,
+.githubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.showMore:hover,
+.githubLink:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+@media (prefers-color-scheme: dark) {
+  .public { background-color: rgba(52, 199, 89, 0.18); color: #6ee7a0; }
+  .local { background-color: rgba(66, 153, 225, 0.2); }
+}
+
+@media (max-width: 700px) {
+  .groups {
+    grid-template-columns: 1fr;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+}

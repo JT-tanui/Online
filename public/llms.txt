@@ -1,30 +1,36 @@
 # Job Kiprotich Busienei
 
 > Software engineer in Nairobi, Kenya. Builds help desk and workflow software —
-> ticketing platforms, knowledge bases, and Windows desktop tools. Currently a
-> Software Engineer at SafariDesk. Open to remote roles.
+> ticketing platforms, knowledge bases, learning platforms, and Windows desktop
+> tools. Currently a Software Engineer at SafariDesk. Open to remote roles.
 
 - **Location:** Nairobi, Kenya (UTC+3)
 - **Email:** jobtanui21@gmail.com
-- **GitHub:** https://github.com/JT-tanui
+- **GitHub:** https://github.com/JT-tanui — 99 repositories
 - **LinkedIn:** https://linkedin.com/in/job-busienei
 - **Portfolio:** https://busienei-portfolio.netlify.app/
 
 ## Current role
 
-**Software Engineer, SafariDesk** — March 2025 to present. SafariDesk is a help
-desk and ticketing SaaS: shared inbox, SLA controls, email-to-ticket intake,
-knowledge base, customer portal, cloud and self-hosted Docker deployments.
+**Software Engineer, SafariDesk** — March 2025 to present. SafariDesk is his
+employer's product, not his own: a help desk and ticketing SaaS with a shared
+inbox, SLA controls, email-to-ticket intake, knowledge base, customer portal, and
+cloud plus self-hosted Docker deployments. He is one of twenty contributors and,
+because it is a small startup, owns large pieces of it.
 
-Work spans a Django and PostgreSQL backend and a React and TypeScript frontend.
-Contributions include per-tenant branded transactional email, a unified real-time
-event broadcast layer, OAuth token refresh for Google and Microsoft mailboxes,
+Measured contribution: 461 of 2,027 commits across the two main repositories —
+second of twenty contributors on both. Backend is Django and PostgreSQL (61,903
+lines); frontend is React and TypeScript (89,312 lines).
+
+Work includes per-tenant branded transactional email, a unified real-time event
+broadcast layer, OAuth token refresh for Google and Microsoft mailboxes,
 multi-tenant data isolation fixes, the knowledge base and public help centre, and
 a shared form component library.
 
-Also builds Safe Redact, a C# WPF desktop application on .NET 10 that detects and
-removes personal information from documents, images, audio and video using local
-ONNX models with DirectML GPU acceleration.
+He is also the largest contributor (122 of 241 commits) to **Safe Redact**, a
+sibling product: a C# WPF desktop application on .NET 10 (94,532 lines) that
+detects and removes personal information from documents, images, audio and video
+using local ONNX models with DirectML GPU acceleration.
 
 ## Previous
 
@@ -50,30 +56,97 @@ awarded to him.
 AWS re/Start Graduate (January 2025) · Power Learn Project, Software Engineering
 and Full-Stack Web Development (January 2025) · IBM Cybersecurity Fundamentals ·
 Wells Fargo Software Engineering Job Simulation via Forage · freeCodeCamp
-Front-End Development · Cisco Python Essentials
+Front-End Development · Cisco Python Essentials · Trae AI IDE Hackathon
 
 ## Technologies
 
-- **Languages:** Python, TypeScript, C#, JavaScript, SQL, Dart
-- **Backend:** Django, FastAPI, PostgreSQL, REST APIs, WebSockets, Redis
+- **Languages:** Python, TypeScript, C#, JavaScript, SQL, Dart, PHP, Java, Ruby
+- **Backend:** Django, FastAPI, NestJS, Fastify, PostgreSQL, REST, WebSockets, Redis
 - **Frontend:** React, Next.js, Tailwind CSS, Vite
-- **Desktop and mobile:** WPF, .NET 10, Windows App SDK, .NET MAUI, Flutter
-- **Platform:** Docker, nginx, GitHub Actions, Linux, AWS
-- **AI and media:** ONNX Runtime, LiveKit, whisper.cpp, FFmpeg, pgvector
+- **Desktop and mobile:** WPF, .NET 10, Windows App SDK, .NET MAUI, Flutter, React Native, Expo
+- **Platform:** Docker, nginx, Caddy, GitHub Actions, Linux, AWS, MinIO
+- **AI and media:** ONNX Runtime, DirectML, LiveKit, whisper.cpp, FFmpeg, pgvector, Remotion
 
-## Selected projects
+## Projects
+
+Line counts below are counted from source, excluding dependencies, build output
+and vendored third-party code.
+
+### Professional (SafariDesk — employer's products, his contribution stated)
 
 - **SafariDesk** — help desk and ticketing SaaS. Django, React, TypeScript,
-  PostgreSQL, Docker. https://safaridesk.io
+  PostgreSQL, Docker. 151,000+ lines across two repositories; 461 of 2,027
+  commits. https://safaridesk.io
 - **Safe Redact** — Windows desktop application removing personal data from
   documents, images, audio and video. C#, .NET 10, WPF, ONNX Runtime, DirectML.
+  94,532 lines; 122 of 241 commits, largest contributor.
+- **SafariDesk CSAT** — self-hosted customer satisfaction survey platform.
+  React, Python. 7,454 lines; 17 of 41 commits.
+
+### Personal
+
+- **SOVAS** — multi-portal learning management system with five role-based
+  portals (student, teacher, institution, admin, marketing). Django, React,
+  Docker, Caddy. 44,468 lines across 457 files.
+- **YouTube Agent** — zero-budget multi-organisation YouTube automation:
+  topic to script to render to upload, with per-org branding, content calendars,
+  analytics and voice benchmarking. Python, Remotion. 32,313 lines.
+- **Explainer Video Generator** — faceless explainer pipeline, mechanism-driven.
+  Python, Remotion. 24,955 lines.
+- **Syvella** — automated explainer video pipeline with word-synchronised
+  captions. Node.js, Remotion. 19,242 lines.
+- **Boval** — multi-tenant booking platform with branded booking pages, embed
+  widget, plan-based billing, multi-currency geo pricing. FastAPI, PostgreSQL,
+  Next.js, Docker. 19,187 lines, sole author.
+- **Agentic Personal Assistant** — voice-first multi-agent platform with local
+  models. Python, React, Whisper, Ollama, Temporal. 17,276 lines.
+- **SWE** — sprint-based AI software house: agents plan, split and review work.
+  Python. 15,617 lines.
 - **Ellie** — local-first meeting notetaker for Windows and Android. C#, Windows
-  App SDK, .NET MAUI, local whisper and llama.cpp inference. Ships signed MSIX
-  and Google Play bundles.
-- **Boval** — multi-tenant booking platform. FastAPI, PostgreSQL, Next.js,
-  Docker.
-- **SOVAS** — multi-portal learning management system. Django, React, Docker.
-- **Vision** — proactive AI voice assistant. FastAPI, LiveKit, pgvector, Flutter.
+  App SDK, .NET MAUI, local whisper and llama.cpp with a Vulkan build. 15,019
+  lines across 12 projects. Ships signed MSIX, APK and Google Play bundle.
+- **Vision** — proactive AI voice assistant that calls on a schedule and
+  remembers past conversations. FastAPI, LiveKit, pgvector, Redis, NATS,
+  Next.js, Flutter. 15,018 lines.
+- **SwiftX** — teen driver safety and ride-hailing: NestJS API, driver and
+  parent React Native apps, Next.js admin. 11,652 lines.
+- **Nyukiwatch** — offline-first apiary management. Caretakers log hive
+  check-ins with photo and voice note; apiarists record inspections (queen
+  sighted, brood pattern, action taken). Fastify, PostgreSQL, MinIO. 10,288
+  lines with idempotent offline sync.
+- **ASIZ** — document intelligence with OCR ingestion, sector classification and
+  real-time voice consultation. FastAPI, React Native, PaddleOCR, LiveKit.
+  9,919 lines.
+- **Multiplayer Board Game Portal** — real-time Monopoly played across a TV and
+  players' phones, joined by QR code. NestJS, Socket.IO, Prisma. 6,151 lines.
+- **Ambient Scenery Video Generator** — hour-long scenery videos with layered
+  asset fallback. Python, FFmpeg. 2,175 lines.
+- **MSME Management System** — inventory, sales, expenses and analytics for
+  small businesses. Flask, SQLite, Chart.js.
+  https://msme-management-system.onrender.com/
+- **Device Check-In System** — equipment loan tracking built at Kenya Power.
+  PHP, SQL. https://github.com/JT-tanui/Stima_checkin_system
+- **Charge Monitor** — Windows and Android battery notifier. C#, .NET.
+  https://github.com/JT-tanui/CM---Charge-Monitor
+
+### Also built
+
+Senvallas Ecosystem (multi-product platform) · Cheggly (study assistant, web and
+mobile) · Sanvelle / Sanvellas · Sypot / Spotly (local discovery) · Telemed
+(telemedicine) · Groove Map · Sharl (music) · Digital Chama Circles (savings
+groups) · Secure Pay Kenya Portal · Synora Care Companion · Dinex (food) · Home
+Nexus Connect · Urbanease · Hm-office (office automation, Python) · Automations ·
+Audio Chatbot · AI Assistant · SD Agent · Agent-Tanui · Hisper · PC Optimizer
+(PowerShell diagnostics suite) · Tactical Squares (Flutter game) · Battery
+Notifier (Android) · Ticket System (Laravel) · Video Call (WebRTC) · Delivery
+Management System · Citi-Platform (civic petitions) · Student Petition Power ·
+Social Justice App · Mac & Too (agency site) · House Hold Services · Rednote
+Recipe Chef · Drug Store / Pharmacy · Bookstore API (Ruby) · Timetable · Java
+Projects · Ruby Programming · Android Programs · VB.NET programs · Small Projects
+· Global Hack Week submission · client freelance work
+
+Many are private repositories or exist only locally. He is happy to walk through
+any of them on a call or share access on request.
 
 ## Looking for
 

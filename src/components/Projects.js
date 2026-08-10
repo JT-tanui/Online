@@ -3,170 +3,133 @@ import { projects } from '../data/projects';
 import styles from '../styles/Projects.module.css';
 import AnimatedSection from './AnimatedSection';
 
+const AVAILABILITY = {
+  public: { icon: 'fas fa-code-branch', label: 'Public repository' },
+  private: { icon: 'fas fa-lock', label: 'Private repository' },
+  local: { icon: 'fas fa-hard-drive', label: 'Local — available on request' },
+};
+
 const Projects = () => {
   const [filter, setFilter] = useState('all');
   const [visibleProjects, setVisibleProjects] = useState([]);
-  const [activeTab, setActiveTab] = useState('latest'); // Default to latest
+  const [activeTab, setActiveTab] = useState('all');
   const [expandedProject, setExpandedProject] = useState(null);
-  const [showAllLatest, setShowAllLatest] = useState(false);
 
-  // Combine and sort projects to show featured/latest first
   const allProjects = [
-    ...projects.completed.map(project => ({...project, status: 'completed'})),
-    ...projects.inProgress.map(project => ({...project, status: 'inProgress'}))
+    ...projects.completed.map((project) => ({ ...project, status: 'completed' })),
+    ...projects.inProgress.map((project) => ({ ...project, status: 'inProgress' })),
   ].sort((a, b) => {
-    // Sort by featured first
     if (a.featured && !b.featured) return -1;
     if (!a.featured && b.featured) return 1;
-    // Then sort by date (newest first)
     return new Date(b.date) - new Date(a.date);
   });
 
-  const latestProjects = allProjects.filter(project => project.featured);
-
-  // Normalize project categories to handle AI case consistently
-  const normalizeProjects = (projects) => {
-    return projects.map(project => ({
+  const normalize = (list) =>
+    list.map((project) => ({
       ...project,
-      categories: project.categories.map(cat => 
-        cat.toLowerCase() === 'ai' ? 'AI' : cat
-      )
+      categories: project.categories.map((cat) => (cat.toLowerCase() === 'ai' ? 'AI' : cat)),
     }));
-  };
 
-  const normalizedAllProjects = normalizeProjects(allProjects);
-  const normalizedLatestProjects = normalizeProjects(latestProjects);
+  const byCategory = (list, category) => {
+    const normalized = normalize(list);
+    if (category === 'all') return normalized;
+    const lower = category.toLowerCase();
+    return normalized.filter((p) => p.categories.some((c) => c.toLowerCase() === lower));
+  };
 
   useEffect(() => {
-    // Initial load - set projects 
-    if (activeTab === 'all') {
-      filterProjects(filter);
-    } else if (activeTab === 'latest') {
-      // If in latest mode and not showing all, limit to 3 projects
-      const filteredLatest = filterProjectsByCategory(normalizedLatestProjects, filter);
-      setVisibleProjects(showAllLatest ? filteredLatest : filteredLatest.slice(0, 4));
-    } else if (activeTab === 'completed') {
-      setVisibleProjects(filterProjectsByCategory(
-        projects.completed.map(project => ({...project, status: 'completed'})), 
-        filter
-      ));
-    } else if (activeTab === 'inProgress') {
-      setVisibleProjects(filterProjectsByCategory(
-        projects.inProgress.map(project => ({...project, status: 'inProgress'})), 
-        filter
-      ));
-    }
-  }, [filter, activeTab, showAllLatest]);
+    const source =
+      activeTab === 'all'
+        ? allProjects
+        : activeTab === 'work'
+        ? allProjects.filter((p) => p.kind === 'work')
+        : activeTab === 'personal'
+        ? allProjects.filter((p) => p.kind === 'personal')
+        : allProjects.filter((p) => p.status === 'inProgress');
 
-  const filterProjects = (category) => {
-    if (category === 'all') {
-      setVisibleProjects(normalizedAllProjects);
-    } else {
-      const categoryLower = category.toLowerCase();
-      setVisibleProjects(
-        normalizedAllProjects.filter(project => 
-          project.categories.some(cat => cat.toLowerCase() === categoryLower)
-        )
-      );
-    }
-  };
-
-  const filterProjectsByCategory = (projectList, category) => {
-    const normalizedList = normalizeProjects(projectList);
-    if (category === 'all') {
-      return normalizedList;
-    }
-    const categoryLower = category.toLowerCase();
-    return normalizedList.filter(project => 
-      project.categories.some(cat => cat.toLowerCase() === categoryLower)
-    );
-  };
-
-  // Updated function to handle the tab change
+    setVisibleProjects(byCategory(source, filter));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter, activeTab]);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     setExpandedProject(null);
-    setShowAllLatest(false);
-    setFilter('all'); // Reset filter when changing tabs
+    setFilter('all');
   };
 
-  // Get unique categories from all projects with proper case handling
-  const categories = React.useMemo(() => {
-    return ['all', ...new Set(
-      allProjects.flatMap(project => 
-        project.categories.map(cat => cat.toLowerCase())
-      )
-    )].sort().map(cat => cat === 'ai' ? 'AI' : cat.charAt(0).toUpperCase() + cat.slice(1));
-  }, [allProjects]); // Only recalculate when projects change
+  const categories = React.useMemo(
+    () =>
+      ['all', ...new Set(allProjects.flatMap((p) => p.categories.map((c) => c.toLowerCase())))]
+        .sort()
+        .map((c) => (c === 'ai' ? 'AI' : c.charAt(0).toUpperCase() + c.slice(1))),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   const toggleProject = (id, event) => {
-    // Prevent triggering when clicking on links
-    if (event.target.tagName === 'A' || 
-        event.target.parentElement.tagName === 'A' ||
-        event.target.tagName === 'I') {
+    if (
+      event.target.tagName === 'A' ||
+      event.target.parentElement?.tagName === 'A' ||
+      event.target.tagName === 'I'
+    ) {
       return;
     }
-    
-    if (expandedProject === id) {
-      setExpandedProject(null);
-    } else {
-      setExpandedProject(id);
-    }
+    setExpandedProject(expandedProject === id ? null : id);
   };
+
+  const counts = {
+    all: allProjects.length,
+    work: allProjects.filter((p) => p.kind === 'work').length,
+    personal: allProjects.filter((p) => p.kind === 'personal').length,
+    inProgress: allProjects.filter((p) => p.status === 'inProgress').length,
+  };
+
+  const tabs = [
+    { key: 'all', icon: 'fas fa-th-large', label: 'All' },
+    { key: 'work', icon: 'fas fa-briefcase', label: 'Professional' },
+    { key: 'personal', icon: 'fas fa-code', label: 'Personal' },
+    { key: 'inProgress', icon: 'fas fa-code-branch', label: 'In Progress' },
+  ];
 
   return (
     <AnimatedSection className={styles.projects} id="projects">
-      {/* Banner */}
       <div className={styles.projectsBanner}>
         <div className={styles.bannerContennt}>
-          <h2 className={styles.sectionTitle}>My Projects</h2>
+          <h2 className={styles.sectionTitle}>Projects</h2>
         </div>
       </div>
-      
-      {/* Modern tab navigation - completely redesigned */}
+
+      <p className={styles.projectsIntro}>
+        Work marked <strong>Professional</strong> belongs to my employer — I contributed to it,
+        with my share stated on each card. Everything under <strong>Personal</strong> is my own.
+        Line counts exclude dependencies and vendored code.
+      </p>
+
       <div className={styles.tabContainer}>
         <div className={styles.tabsWrapper}>
-          <div className={`${styles.tabIndicator} ${styles[activeTab]}`}></div>
-          <button 
-            className={`${styles.tabOption} ${activeTab === 'latest' ? styles.active : ''}`}
-            onClick={() => handleTabChange('latest')}
-            aria-label="Latest projects"
-          >
-            <i className="fas fa-star"></i> Latest
-          </button>
-          <button 
-            className={`${styles.tabOption} ${activeTab === 'all' ? styles.active : ''}`}
-            onClick={() => handleTabChange('all')}
-            aria-label="All projects"
-          >
-            <i className="fas fa-th-large"></i> All
-          </button>
-          <button 
-            className={`${styles.tabOption} ${activeTab === 'completed' ? styles.active : ''}`}
-            onClick={() => handleTabChange('completed')}
-            aria-label="Completed projects"
-          >
-            <i className="fas fa-check-circle"></i> Completed
-          </button>
-          <button 
-            className={`${styles.tabOption} ${activeTab === 'inProgress' ? styles.active : ''}`}
-            onClick={() => handleTabChange('inProgress')}
-            aria-label="In-progress projects"
-          >
-            <i className="fas fa-code-branch"></i> In Progress
-          </button>
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              className={`${styles.tabOption} ${activeTab === tab.key ? styles.active : ''}`}
+              onClick={() => handleTabChange(tab.key)}
+              aria-label={tab.label}
+            >
+              <i className={tab.icon}></i> {tab.label}
+              <span className={styles.tabCount}>{counts[tab.key]}</span>
+            </button>
+          ))}
         </div>
       </div>
-      
-      {/* Filter section - improved layout */}
+
       <div className={styles.filterContainer}>
         <div className={styles.filterLabel}>Filter by:</div>
         <div className={styles.filterButtons}>
           {categories.map((category, index) => (
             <button
               key={index}
-              className={`${styles.filterButton} ${filter === category.toLowerCase() ? styles.active : ''}`}
+              className={`${styles.filterButton} ${
+                filter === category.toLowerCase() ? styles.active : ''
+              }`}
               onClick={() => setFilter(category.toLowerCase())}
               data-category={category}
             >
@@ -175,114 +138,140 @@ const Projects = () => {
           ))}
         </div>
       </div>
-      
+
       <div className={styles.projectsGrid}>
-        {visibleProjects.map(project => (
-          <div 
-            key={project.id} 
-            className={`${styles.projectCard} ${expandedProject === project.id ? styles.expanded : ''}`}
-            onClick={(e) => toggleProject(project.id, e)}
-          >
-            <div className={styles.projectImageContainer}>
-              {project.image ? (
-                <div
-                  className={styles.projectImage}
-                  style={{ backgroundImage: `url(${project.image})` }}
-                ></div>
-              ) : (
-                <div
-                  className={styles.projectMonogram}
-                  style={{ '--accent': project.accent || 'var(--primary-color)' }}
-                  aria-hidden="true"
-                >
-                  {project.title.charAt(0)}
-                </div>
-              )}
-              {project.status === 'inProgress' && (
-                <div className={styles.statusBadge} aria-label="Project in progress">In Progress</div>
-              )}
-              {project.featured && (
-                <div className={`${styles.statusBadge} ${styles.featured}`} aria-label="Featured project">Featured</div>
-              )}
-            </div>
-            <div className={styles.projectContent}>
-              <h3 className={styles.projectTitle}>{project.title}</h3>
-              <p className={styles.projectDescription}>
-                {expandedProject === project.id ? project.longDescription : project.description}
-              </p>
-              <div className={styles.projectTechStack}>
-                {project.technologies.map((tech, index) => (
-                  <span key={index} className={styles.techTag}>{tech}</span>
-                ))}
-              </div>
-              <div className={styles.projectLinks}>
-                {project.githubUrl && (
-                  <a 
-                    href={project.githubUrl} 
-                    className={styles.projectLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={e => e.stopPropagation()}
+        {visibleProjects.map((project) => {
+          const availability = AVAILABILITY[project.availability];
+          const isOpen = expandedProject === project.id;
+
+          return (
+            <div
+              key={project.id}
+              className={`${styles.projectCard} ${isOpen ? styles.expanded : ''}`}
+              onClick={(e) => toggleProject(project.id, e)}
+            >
+              <div className={styles.projectImageContainer}>
+                {project.image ? (
+                  <div
+                    className={styles.projectImage}
+                    style={{ backgroundImage: `url(${project.image})` }}
+                  ></div>
+                ) : (
+                  <div
+                    className={styles.projectMonogram}
+                    style={{ '--accent': project.accent || 'var(--primary-color)' }}
+                    aria-hidden="true"
                   >
-                    <i className="fab fa-github"></i> GitHub
-                  </a>
+                    {project.title.charAt(0)}
+                  </div>
                 )}
-                {project.liveUrl && project.liveUrl.trim() !== "" && (
-                  <a
-                    href={project.liveUrl}
-                    className={styles.projectLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={e => e.stopPropagation()}
-                  >
-                    <i className="fas fa-external-link-alt"></i> Visit site
-                  </a>
+                {project.status === 'inProgress' && (
+                  <div className={styles.statusBadge}>In Progress</div>
                 )}
-                {!project.githubUrl && project.privateRepo && (
-                  <span className={styles.projectLinkMuted}>
-                    <i className="fas fa-lock"></i> Private repository
-                  </span>
+                {project.kind === 'work' && (
+                  <div className={`${styles.statusBadge} ${styles.workBadge}`}>
+                    {project.employer}
+                  </div>
                 )}
               </div>
 
-              {expandedProject === project.id && (
-                <div className={styles.projectDetails}>
-                  <h4>Features</h4>
-                  <ul className={styles.featuresList}>
-                    {project.features.map((feature, index) => (
-                      <li key={index}>{feature}</li>
-                    ))}
-                  </ul>
-                  {project.challenge && (
-                    <>
-                      <h4>What was hard about this</h4>
-                      <p className={styles.projectChallenge}>{project.challenge}</p>
-                    </>
+              <div className={styles.projectContent}>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+
+                {project.contribution && (
+                  <p className={styles.contribution}>
+                    <i className="fas fa-user-check"></i> {project.contribution}
+                  </p>
+                )}
+
+                <p className={styles.projectDescription}>
+                  {isOpen ? project.longDescription : project.description}
+                </p>
+
+                {project.stats && (
+                  <div className={styles.statRow}>
+                    {project.stats.loc && (
+                      <span className={styles.stat}>
+                        <i className="fas fa-code"></i> {project.stats.loc}
+                      </span>
+                    )}
+                    {project.stats.span && (
+                      <span className={styles.stat}>
+                        <i className="fas fa-calendar"></i> {project.stats.span}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                <div className={styles.projectTechStack}>
+                  {project.technologies.map((tech, index) => (
+                    <span key={index} className={styles.techTag}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className={styles.projectLinks}>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      className={styles.projectLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <i className="fab fa-github"></i> Code
+                    </a>
+                  )}
+                  {project.liveUrl && project.liveUrl.trim() !== '' && (
+                    <a
+                      href={project.liveUrl}
+                      className={styles.projectLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <i className="fas fa-external-link-alt"></i> Visit site
+                    </a>
+                  )}
+                  {!project.githubUrl && availability && (
+                    <span className={styles.projectLinkMuted}>
+                      <i className={availability.icon}></i> {availability.label}
+                    </span>
                   )}
                 </div>
-              )}
-              
-              <div className={styles.expandPrompt}>
-                <span className={styles.expandIcon}>
-                  <i className={`fas ${expandedProject === project.id ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
-                </span>
-                {expandedProject === project.id ? 'Show less' : 'Show details'}
+
+                {isOpen && (
+                  <div className={styles.projectDetails}>
+                    {project.stats?.detail && (
+                      <p className={styles.statDetail}>{project.stats.detail}</p>
+                    )}
+                    <h4>Features</h4>
+                    <ul className={styles.featuresList}>
+                      {project.features.map((feature, index) => (
+                        <li key={index}>{feature}</li>
+                      ))}
+                    </ul>
+                    {project.challenge && (
+                      <>
+                        <h4>What was hard about this</h4>
+                        <p className={styles.projectChallenge}>{project.challenge}</p>
+                      </>
+                    )}
+                  </div>
+                )}
+
+                <div className={styles.expandPrompt}>
+                  <span className={styles.expandIcon}>
+                    <i className={`fas ${isOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
+                  </span>
+                  {isOpen ? 'Show less' : 'Show details'}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-
-      {activeTab === 'latest' && !showAllLatest && latestProjects.length > 4 && (
-        <div className={styles.showMoreContainer}>
-          <button 
-            className={styles.showMoreButton}
-            onClick={() => setShowAllLatest(true)}
-          >
-            Show More Projects <i className="fas fa-chevron-down"></i>
-          </button>
-        </div>
-      )}
 
       {visibleProjects.length === 0 && (
         <p className={styles.noProjects}>No projects match the selected filters.</p>

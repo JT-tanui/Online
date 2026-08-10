@@ -15,6 +15,11 @@ const Projects = dynamic(() => import('../components/Projects'), {
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
 });
 
+const MoreWork = dynamic(() => import('../components/MoreWork'), {
+  ssr: false,
+  loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>Loading...</div>
+});
+
 const Skills = dynamic(() => import('../components/Skills'), {
   ssr: false,
   loading: () => <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>Loading...</div>
@@ -51,6 +56,10 @@ export default function Home() {
           <Projects />
         </section>
         
+        <section id="more-work">
+          <MoreWork />
+        </section>
+
         <section id="skills">
           <Skills />
         </section>

@@ -693,3 +693,80 @@
   border-left: 3px solid var(--primary-color);
   padding-left: 0.9rem;
 }
+
+/* ---------------------------------------------------------------
+   Work vs personal framing, contribution share, and counted stats.
+   --------------------------------------------------------------- */
+
+.projectsIntro {
+  max-width: 780px;
+  margin: -1.5rem auto 2rem;
+  padding: 0 1rem;
+  text-align: center;
+  line-height: 1.7;
+  color: var(--footer-text);
+  font-size: 0.95rem;
+}
+
+.projectsIntro strong {
+  color: var(--text-color);
+}
+
+.workBadge {
+  background-color: rgba(47, 111, 178, 0.92) !important;
+  color: #ffffff !important;
+}
+
+.tabCount {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background-color: var(--light-gray);
+  color: var(--footer-text);
+  font-size: 0.72rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.tabOption.active .tabCount {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: inherit;
+}
+
+.contribution {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  line-height: 1.45;
+}
+
+.statRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.76rem;
+  color: var(--footer-text);
+  background-color: var(--light-gray);
+  border-radius: 6px;
+  padding: 0.25rem 0.55rem;
+}
+
+.statDetail {
+  margin: 0 0 1rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  color: var(--footer-text);
+  line-height: 1.6;
+}
