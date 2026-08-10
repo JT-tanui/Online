@@ -29,8 +29,10 @@ const About = () => {
           )}
         </div>
         <div className={styles.content}>
+          {/* aboutLead, not `introduction` — the hero already used that one and
+              printing it twice was the loudest repetition on the page. */}
           <p className={styles.intro}>
-            {personalInfo?.introduction || ""}
+            {personalInfo?.aboutLead || ""}
           </p>
           <p className={styles.description}>
             {personalInfo?.longIntro || ""}
@@ -41,18 +43,12 @@ const About = () => {
               <p>{education.degree || ""}</p>
               <p>{education.institution || ""}</p>
               <p>{education.period || ""}</p>
-              {education.description && (
-                <p className={styles.detailNote}>{education.description}</p>
-              )}
             </div>
             <div className={styles.detailItem}>
               <h3>Experience</h3>
               <p>{experience.position || ""}</p>
               <p>{experience.company || ""}</p>
               <p>{experience.period || ""}</p>
-              {experience.description && (
-                <p className={styles.detailNote}>{experience.description}</p>
-              )}
             </div>
           </div>
         </div>

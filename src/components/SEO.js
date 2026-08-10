@@ -30,7 +30,7 @@ const SEO = ({
   const siteImage = ogImage || `${baseUrl}${personalInfo.avatarUrl || '/images/profile.jpg'}`;
   const siteKeywords =
     keywords ||
-    'software engineer, technical support engineer, solutions engineer, help desk software, ticketing system, Django, React, TypeScript, C#, WPF, .NET, Nairobi, Kenya, remote';
+    'software engineer, backend engineer, full-stack engineer, desktop applications, Python, Django, FastAPI, TypeScript, React, Next.js, C#, .NET, WPF, Flutter, ONNX Runtime, local AI inference, Nairobi, Kenya, remote';
 
   // Flat skill list for `knowsAbout` — pulled from the same source the page
   // renders, so structured data can never drift from what a reader sees.

@@ -19,13 +19,12 @@ export const projects = {
       title: "SafariDesk — Help Desk & Ticketing Platform",
       kind: "work",
       employer: "SafariDesk",
-      contribution:
-        "461 of 2,027 commits across the two repositories — 2nd of 20 contributors on both",
+      contribution: "461 of 2,027 commits across both repositories — 3rd of 9 engineers",
       description:
-        "The software a customer support team lives in: every email, chat and request arrives as a ticket the team can assign, track and answer in one place.",
-      longDescription: `SafariDesk is my employer's product, not my own — a help desk and ticketing SaaS with a shared inbox, SLA controls, email-to-ticket intake, knowledge base and customer portal, shipped both hosted and as a self-hosted Docker deployment. It is built by a team of twenty; I am one of them, and because it is a small startup that has meant owning large pieces of it.
+        "A multi-tenant SaaS platform: Django and PostgreSQL behind a React and TypeScript frontend, with real-time updates, OAuth mailbox integration and a self-hosted Docker deployment alongside the cloud one.",
+      longDescription: `My employer's product, built by a small team. What I own within it is mostly backend infrastructure and the shared frontend layer.
 
-      On the Django backend I rebuilt the transactional email system so every message renders against the customer's own branding, introduced a single broadcast layer that pushes real-time updates for tickets, tasks and contacts, and added OAuth token refresh for Google and Microsoft mailbox connections. On the React and TypeScript frontend I built the knowledge base and later rebuilt it as a documentation-style help centre, extended the rich text editor, and replaced every native dropdown in the product with a shared component.`,
+      On the Django side: rebuilt the transactional email system so every message renders against per-tenant branding, replaced scattered per-model event code with one generic broadcast layer pushing real-time updates over WebSockets, and added OAuth token refresh for Google and Microsoft mailbox connections. On the React side: the knowledge base, later rebuilt as a documentation-style help centre with its own typography token system, the rich text editor's image handling, and a shared Select component that replaced every native dropdown in the product.`,
       image: "",
       accent: "#2F6FB2",
       technologies: [
@@ -59,10 +58,10 @@ export const projects = {
       title: "Safe Redact — Desktop Redaction Application",
       kind: "work",
       employer: "SafariDesk",
-      contribution: "122 of 241 commits — largest single contributor of 7",
+      contribution: "123 of 242 commits — more than the other three engineers combined",
       description:
-        "A Windows application that finds and permanently removes private details — names, addresses, account numbers — from documents, images, audio and video, so files can go to a regulator or a customer without leaking anyone's personal data.",
-      longDescription: `A sibling product at the same company, in a separate repository. C# on .NET 10 with a WPF interface, structured in clean layers: contracts, application services, per-media domains, then infrastructure for AI, persistence, storage and platform. There is no HTTP backend — the interface calls C# services directly, which keeps the product installable and fully offline.
+        "A Windows desktop application that runs entity-detection models on the user's own GPU to find and remove personal data from documents, images, audio and video. No server, no upload, no network call.",
+      longDescription: `C# on .NET 10 with a WPF interface, structured in clean layers: contracts, application services, per-media domains, then infrastructure for AI, persistence, storage and platform. There is no HTTP backend — the interface calls C# services directly, which is what makes the product installable and genuinely offline.
 
       Detection runs locally through ONNX Runtime with DirectML GPU acceleration, using GLiNER named-entity models over OCR-extracted text, plus whisper.cpp for spoken content in audio and video.`,
       image: "",
@@ -98,10 +97,10 @@ export const projects = {
       title: "SafariDesk CSAT — Customer Satisfaction Surveys",
       kind: "work",
       employer: "SafariDesk",
-      contribution: "17 of 41 commits",
+      contribution: "17 of 41 commits — most of any of the 3 contributors",
       description:
-        "A self-hosted survey platform that asks customers how a support interaction went — rating scales, multiple choice and open text, shared by link.",
-      longDescription: `A survey product alongside SafariDesk's ticketing platform, built with React and a Python backend. I delivered the search and discoverability layer end to end — structured metadata, sitemap, robots configuration, privacy and terms pages — and handled the migration to the product's new domain, along with a redesign of the marketing and pricing pages.`,
+        "A self-hosted survey platform — rating scales, multiple choice, checkboxes and open text, published to a unique public link per survey.",
+      longDescription: `A React and Python product built alongside the main platform. I delivered the search and discoverability layer end to end — structured metadata, sitemap, robots configuration, privacy and terms pages — and executed the migration to the product's new domain, along with a redesign of the marketing and pricing pages.`,
       image: "",
       accent: "#3E9A8F",
       technologies: ["React", "Vite", "Python", "Docker"],

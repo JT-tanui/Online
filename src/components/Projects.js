@@ -114,9 +114,9 @@ const Projects = () => {
       </div>
 
       <p className={styles.projectsIntro}>
-        Work marked <strong>Professional</strong> belongs to my employer — I contributed to it,
-        with my share stated on each card. Everything under <strong>Personal</strong> is my own.
-        Line counts exclude dependencies and vendored code.
+        <strong>Professional</strong> is my employer&apos;s code — my share of each is stated on the
+        card. <strong>Personal</strong> is mine. Line counts are from source, excluding
+        dependencies, build output and vendored code.
       </p>
 
       <div className={styles.tabContainer}>

@@ -1,9 +1,17 @@
+// Positioning note, so nobody re-flattens this later:
+//
+// He is a software engineer. SafariDesk is where he works, not what he is.
+// An earlier version of this file led with "I build the software support teams
+// work in all day" and then repeated that same sentence in the hero tagline,
+// the hero intro and the About section. Each block below now says something the
+// others do not. If you edit one, check it does not restate another.
+
 export const personalInfo = {
   name: "Job Kiprotich Busienei",
   title: "Software Engineer",
-  headline: "I build help desk and workflow software.",
+  headline: "Backend, desktop, mobile — I build products end to end.",
   seoTitle:
-    "Job Kiprotich Busienei — Software Engineer | Help Desk & Support Tooling | Nairobi",
+    "Job Kiprotich Busienei — Software Engineer | Python, TypeScript, C# | Nairobi",
   email: "jobtanui21@gmail.com",
   location: "Nairobi, Kenya (UTC+3)",
   phone: "+254 707 696 045",
@@ -11,19 +19,25 @@ export const personalInfo = {
   currentCompany: "SafariDesk",
   themeColor: "#4A76B8",
 
+  // Hero only.
   introduction:
-    "I build the software support teams work in all day — ticketing, shared inboxes, knowledge bases, and the desktop tools that sit alongside them. Currently a Software Engineer at SafariDesk in Nairobi, working across a Django and React SaaS platform and a WPF desktop application.",
+    "Python and TypeScript on the server, C# on the desktop, Dart and Kotlin when it needs to be in someone's pocket. I've shipped multi-tenant web platforms, a Windows application that runs AI models on the user's own GPU, and an Android build signed and packaged for the Play Store.",
 
+  // Footer.
   shortBio:
-    "Software engineer at SafariDesk. I build help desk software and Windows desktop tools.",
+    "Software engineer in Nairobi. Backend, desktop and mobile.",
 
-  longIntro: `I work on SafariDesk, a help desk and ticketing platform: shared inbox, SLA controls, email-to-ticket intake, knowledge base, and a customer portal, deployed both as cloud and self-hosted Docker. On the backend that means Django and PostgreSQL — email delivery, real-time event broadcasting, OAuth token refresh, and multi-tenant data isolation. On the frontend it means React and TypeScript — the knowledge base, the rich text editor, and the shared component library.
+  // About only — deliberately different ground from the hero.
+  aboutLead:
+    "Most of what I build, I build all the way: schema through interface through installer. That tends to mean fewer shortcuts than a demo would need and a lot more time in the parts nobody demos.",
 
-  Most recently I have been building a Windows desktop application in C# and WPF that finds and removes personal information from documents, images, audio and video, running AI models locally on the user's own machine rather than in the cloud.
+  longIntro: `Over the last two years I have written a five-portal learning platform on Django, a booking product on FastAPI with its own billing and rate limiting, an offline-first field application where a phone with no signal has to reconcile cleanly hours later, and a Windows desktop application in C# that detects personal information in documents, images and video without sending any of it to a server.
 
-  Before SafariDesk I spent seven months in the ICT and Telecommunication Division at Kenya Power in Nakuru, doing frontline support — Windows user support, service desk monitoring, LAN/WAN and Cisco equipment, and VHF/HF radio systems. That period is why I like building tools for support teams: I have been the person on the other end of the ticket.
+  That last one is where I have spent most of this year. Running models locally means ONNX Runtime, DirectML for GPU acceleration, whisper.cpp for speech, and llama.cpp in a separate host process with its own Vulkan build — plus the unglamorous half: code signing, MSIX packaging, Play Store bundles, and the store listings that go with them. Shipping software to a stranger's machine is a different discipline from deploying to a server you control.
 
-  I am comfortable in the space between engineering and the customer — reproducing a problem, reading a log, and explaining what actually happened.`,
+  I am at my best on a hard bug. My favourite this year: two NuGet packages shipping competing builds of the same native library to the same output path, which silently forced every AI detector in the application onto the CPU while the startup check reported GPU acceleration as available. I found it in a single line of a field log.
+
+  I work at SafariDesk, a startup in Nairobi, on a Django and React platform and the C# desktop application above. Before engineering full time I spent seven months on the ICT service desk at Kenya Power, which is the reason I read logs before I guess.`,
 
   education: {
     degree: "Diploma in Computer Programming",
@@ -38,7 +52,7 @@ export const personalInfo = {
     company: "SafariDesk",
     period: "March 2025 – Present",
     description:
-      "Help desk and ticketing SaaS. Django/PostgreSQL backend and React/TypeScript frontend, plus a C# WPF desktop application for document redaction."
+      "Django and PostgreSQL services, a React and TypeScript frontend, and a C# WPF desktop application with local model inference."
   },
 
   additionalEducation: [
@@ -68,7 +82,7 @@ export const personalInfo = {
       institution: "Wells Fargo (via Forage)",
       period: "2025",
       description:
-        "Virtual work programme covering feature implementation against an existing Java codebase."
+        "Virtual work programme implementing features against an existing Java codebase."
     },
     {
       degree: "Front-End Development Certification",
@@ -90,7 +104,7 @@ export const personalInfo = {
       company: "Kenya Power (KPLC), Nakuru",
       period: "January – July 2024",
       description:
-        "Frontline ICT support: Windows user support, service desk monitoring and resolution-time reporting, LAN/WAN and Cisco equipment, VHF/HF radio systems, and equipment inventory. Built an internal device check-in/check-out system."
+        "Windows and network support across the division: service desk monitoring and resolution-time reporting, LAN/WAN and Cisco equipment, VHF/HF radio systems. Built an internal device check-in and check-out system to replace a paper equipment log."
     }
   ],
 
@@ -103,15 +117,19 @@ export const personalInfo = {
   skills: [
     {
       category: "Backend",
-      skills: ["Python", "Django", "FastAPI", "PostgreSQL", "REST APIs", "WebSockets"]
+      skills: ["Python", "Django", "FastAPI", "NestJS", "PostgreSQL", "REST APIs", "WebSockets"]
     },
     {
       category: "Frontend",
       skills: ["TypeScript", "React", "Next.js", "Tailwind CSS"]
     },
     {
-      category: "Desktop",
-      skills: ["C#", ".NET", "WPF", "WinUI", ".NET MAUI"]
+      category: "Desktop & mobile",
+      skills: ["C#", ".NET", "WPF", "WinUI", ".NET MAUI", "Flutter", "React Native"]
+    },
+    {
+      category: "Systems & AI",
+      skills: ["ONNX Runtime", "DirectML", "whisper.cpp", "llama.cpp", "FFmpeg", "pgvector"]
     },
     {
       category: "Platform",

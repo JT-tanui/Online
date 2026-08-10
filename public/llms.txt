@@ -1,8 +1,9 @@
 # Job Kiprotich Busienei
 
-> Software engineer in Nairobi, Kenya. Builds help desk and workflow software —
-> ticketing platforms, knowledge bases, learning platforms, and Windows desktop
-> tools. Currently a Software Engineer at SafariDesk. Open to remote roles.
+> Software engineer in Nairobi, Kenya. Builds across backend, desktop and mobile:
+> Python and TypeScript services, C# Windows applications with local model
+> inference, and Android builds shipped to store. Works at SafariDesk. Open to
+> remote roles.
 
 - **Location:** Nairobi, Kenya (UTC+3)
 - **Email:** jobtanui21@gmail.com
@@ -12,14 +13,15 @@
 
 ## Current role
 
-**Software Engineer, SafariDesk** — March 2025 to present. SafariDesk is his
-employer's product, not his own: a help desk and ticketing SaaS with a shared
-inbox, SLA controls, email-to-ticket intake, knowledge base, customer portal, and
-cloud plus self-hosted Docker deployments. He is one of twenty contributors and,
-because it is a small startup, owns large pieces of it.
+**Software Engineer, SafariDesk** — March 2025 to present. A Nairobi startup with
+a small engineering team, so his scope is wide. The platform is a multi-tenant
+Django and PostgreSQL backend behind a React and TypeScript frontend, with
+real-time updates over WebSockets, OAuth mailbox integration, and both cloud and
+self-hosted Docker deployments. It is his employer's product, not his own.
 
 Measured contribution: 461 of 2,027 commits across the two main repositories —
-second of twenty contributors on both. Backend is Django and PostgreSQL (61,903
+third of nine engineers. Contributor counts are deduplicated: several people
+commit under multiple git identities. Backend is Django and PostgreSQL (61,903
 lines); frontend is React and TypeScript (89,312 lines).
 
 Work includes per-tenant branded transactional email, a unified real-time event
@@ -27,7 +29,7 @@ broadcast layer, OAuth token refresh for Google and Microsoft mailboxes,
 multi-tenant data isolation fixes, the knowledge base and public help centre, and
 a shared form component library.
 
-He is also the largest contributor (122 of 241 commits) to **Safe Redact**, a
+He is also the largest contributor (123 of 242 commits — more than the other three engineers combined) to **Safe Redact**, a
 sibling product: a C# WPF desktop application on .NET 10 (94,532 lines) that
 detects and removes personal information from documents, images, audio and video
 using local ONNX models with DirectML GPU acceleration.
@@ -75,13 +77,12 @@ and vendored third-party code.
 ### Professional (SafariDesk — employer's products, his contribution stated)
 
 - **SafariDesk** — help desk and ticketing SaaS. Django, React, TypeScript,
-  PostgreSQL, Docker. 151,000+ lines across two repositories; 461 of 2,027
-  commits. https://safaridesk.io
+  PostgreSQL, Docker. 151,000+ lines across two repositories; 461 of 2,027 commits, third of nine. https://safaridesk.io
 - **Safe Redact** — Windows desktop application removing personal data from
   documents, images, audio and video. C#, .NET 10, WPF, ONNX Runtime, DirectML.
-  94,532 lines; 122 of 241 commits, largest contributor.
+  94,532 lines; 123 of 242 commits, more than the other three engineers combined.
 - **SafariDesk CSAT** — self-hosted customer satisfaction survey platform.
-  React, Python. 7,454 lines; 17 of 41 commits.
+  React, Python. 7,454 lines; 17 of 41 commits, most of any of the three contributors.
 
 ### Personal
 
