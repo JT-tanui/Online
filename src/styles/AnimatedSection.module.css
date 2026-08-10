@@ -1,0 +1,29 @@
+/*
+ * No class = visible. That is the whole safety property here.
+ *
+ * `.reveal` is added only when the element enters the viewport and is removed
+ * again on animationend (or by a timer if the animation never completes), so
+ * the element always returns to its natural visible state. Nothing about the
+ * resting appearance depends on JavaScript or on animations actually running.
+ */
+
+.reveal {
+  animation: revealIn 0.6s ease-out var(--reveal-delay, 0s) both;
+}
+
+@keyframes revealIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+}
