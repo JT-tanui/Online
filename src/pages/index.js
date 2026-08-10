@@ -4,7 +4,6 @@ import Hero from '../components/Hero';
 import SEO from '../components/SEO';
 import About from '../components/About';
 import Projects from '../components/Projects';
-import MoreWork from '../components/MoreWork';
 import Skills from '../components/Skills';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
@@ -33,10 +32,6 @@ export default function Home() {
 
         <section id="projects">
           <Projects />
-        </section>
-
-        <section id="more-work">
-          <MoreWork />
         </section>
 
         <section id="skills">

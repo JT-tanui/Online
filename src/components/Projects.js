@@ -1,7 +1,20 @@
 import React, { useState, useMemo } from 'react';
 import { projects } from '../data/projects';
+import { moreWork } from '../data/moreWork';
 import styles from '../styles/Projects.module.css';
 import AnimatedSection from './AnimatedSection';
+import MoreWork from './MoreWork';
+
+// Category slugs are lowercased for filtering, so the display label has to be
+// restored explicitly where simple capitalisation gets it wrong.
+const CATEGORY_LABELS = {
+  ai: 'AI',
+  saas: 'SaaS',
+  fullstack: 'Full-stack',
+};
+
+const label = (slug) =>
+  CATEGORY_LABELS[slug] || slug.charAt(0).toUpperCase() + slug.slice(1);
 
 const AVAILABILITY = {
   public: { icon: 'fas fa-code-branch', label: 'Public repository' },
@@ -23,17 +36,9 @@ const Projects = () => {
     return new Date(b.date) - new Date(a.date);
   });
 
-  const normalize = (list) =>
-    list.map((project) => ({
-      ...project,
-      categories: project.categories.map((cat) => (cat.toLowerCase() === 'ai' ? 'AI' : cat)),
-    }));
-
   const byCategory = (list, category) => {
-    const normalized = normalize(list);
-    if (category === 'all') return normalized;
-    const lower = category.toLowerCase();
-    return normalized.filter((p) => p.categories.some((c) => c.toLowerCase() === lower));
+    if (category === 'all') return list;
+    return list.filter((p) => p.categories.some((c) => c.toLowerCase() === category));
   };
 
   // Derived during render, not in an effect. Effects do not run during static
@@ -59,14 +64,12 @@ const Projects = () => {
     setFilter('all');
   };
 
-  const categories = React.useMemo(
-    () =>
-      ['all', ...new Set(allProjects.flatMap((p) => p.categories.map((c) => c.toLowerCase())))]
-        .sort()
-        .map((c) => (c === 'ai' ? 'AI' : c.charAt(0).toUpperCase() + c.slice(1))),
+  const categories = React.useMemo(() => {
+    const slugs = [...new Set(allProjects.flatMap((p) => p.categories.map((c) => c.toLowerCase())))]
+      .sort();
+    return ['all', ...slugs];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
-  );
+  }, []);
 
   const toggleProject = (id, event) => {
     if (
@@ -79,11 +82,17 @@ const Projects = () => {
     setExpandedProject(expandedProject === id ? null : id);
   };
 
+  const moreWorkCount = (moreWork.groups || []).reduce(
+    (total, group) => total + group.items.length,
+    0
+  );
+
   const counts = {
     all: allProjects.length,
     work: allProjects.filter((p) => p.kind === 'work').length,
     personal: allProjects.filter((p) => p.kind === 'personal').length,
     inProgress: allProjects.filter((p) => p.status === 'inProgress').length,
+    more: moreWorkCount,
   };
 
   const tabs = [
@@ -91,7 +100,10 @@ const Projects = () => {
     { key: 'work', icon: 'fas fa-briefcase', label: 'Professional' },
     { key: 'personal', icon: 'fas fa-code', label: 'Personal' },
     { key: 'inProgress', icon: 'fas fa-code-branch', label: 'In Progress' },
+    { key: 'more', icon: 'fas fa-layer-group', label: 'Everything else' },
   ];
+
+  const showingMore = activeTab === 'more';
 
   return (
     <AnimatedSection className={styles.projects} id="projects">
@@ -123,25 +135,31 @@ const Projects = () => {
         </div>
       </div>
 
-      <div className={styles.filterContainer}>
-        <div className={styles.filterLabel}>Filter by:</div>
-        <div className={styles.filterButtons}>
-          {categories.map((category, index) => (
-            <button
-              key={index}
-              className={`${styles.filterButton} ${
-                filter === category.toLowerCase() ? styles.active : ''
-              }`}
-              onClick={() => setFilter(category.toLowerCase())}
-              data-category={category}
-            >
-              {category}
-            </button>
-          ))}
+      {!showingMore && (
+        <div className={styles.filterContainer}>
+          <div className={styles.filterLabel}>Filter by:</div>
+          <div className={styles.filterButtons}>
+            {categories.map((slug) => (
+              <button
+                key={slug}
+                className={`${styles.filterButton} ${filter === slug ? styles.active : ''}`}
+                onClick={() => setFilter(slug)}
+                data-category={label(slug)}
+              >
+                {label(slug)}
+              </button>
+            ))}
+          </div>
         </div>
+      )}
+
+      {/* Always rendered, toggled with `hidden`, so all 43 entries stay in the
+          exported HTML for crawlers that never click a tab. */}
+      <div hidden={!showingMore}>
+        <MoreWork />
       </div>
 
-      <div className={styles.projectsGrid}>
+      <div className={styles.projectsGrid} hidden={showingMore}>
         {visibleProjects.map((project) => {
           const availability = AVAILABILITY[project.availability];
           const isOpen = expandedProject === project.id;
@@ -275,7 +293,7 @@ const Projects = () => {
         })}
       </div>
 
-      {visibleProjects.length === 0 && (
+      {!showingMore && visibleProjects.length === 0 && (
         <p className={styles.noProjects}>No projects match the selected filters.</p>
       )}
     </AnimatedSection>

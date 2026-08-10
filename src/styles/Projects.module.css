@@ -770,3 +770,33 @@
   color: var(--footer-text);
   line-height: 1.6;
 }
+
+/* ---------------------------------------------------------------
+   Even out the grid. Cards were rendering at 14 different heights
+   because content length varies and nothing forced them to fill
+   their row, which left a ragged bottom edge on every row.
+   --------------------------------------------------------------- */
+
+.projectsGrid {
+  align-items: stretch;
+}
+
+.projectCard {
+  height: 100%;
+}
+
+.projectContent {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pin the toggle to the bottom so it lines up across a row regardless
+   of how much description sits above it. */
+.expandPrompt {
+  margin-top: auto;
+}
+
+.projectsGrid[hidden] {
+  display: none;
+}

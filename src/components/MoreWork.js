@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from '../styles/MoreWork.module.css';
 import { moreWork } from '../data/moreWork';
-import AnimatedSection from './AnimatedSection';
 
 const WHERE = {
   public: { icon: 'fab fa-github', label: 'Public' },
@@ -9,15 +8,14 @@ const WHERE = {
   local: { icon: 'fas fa-hard-drive', label: 'On request' },
 };
 
-// Every group renders. A "show more" toggle would keep most of this out of the
-// exported HTML, and this list is exactly what an answer engine should see when
-// asked what he has built.
+// Rendered inside the Projects section as its own tab, rather than as a second
+// section competing with it. Every group renders — a "show more" toggle would
+// keep most of this out of the exported HTML.
 const MoreWork = () => {
   const groups = moreWork.groups || [];
 
   return (
-    <AnimatedSection className={styles.moreWork} id="more-work">
-      <h2 className={styles.sectionTitle}>More work</h2>
+    <div className={styles.moreWork}>
       <p className={styles.intro}>{moreWork.intro}</p>
 
       <div className={styles.groups}>
@@ -30,7 +28,7 @@ const MoreWork = () => {
             <ul className={styles.list}>
               {group.items.map((item) => {
                 const where = WHERE[item.where] || WHERE.local;
-                const Row = (
+                const row = (
                   <>
                     <span className={styles.itemHead}>
                       <span className={styles.itemName}>{item.name}</span>
@@ -52,10 +50,10 @@ const MoreWork = () => {
                         rel="noopener noreferrer"
                         className={styles.itemLink}
                       >
-                        {Row}
+                        {row}
                       </a>
                     ) : (
-                      <div className={styles.itemStatic}>{Row}</div>
+                      <div className={styles.itemStatic}>{row}</div>
                     )}
                   </li>
                 );
@@ -77,7 +75,7 @@ const MoreWork = () => {
           </a>
         </div>
       )}
-    </AnimatedSection>
+    </div>
   );
 };
 
