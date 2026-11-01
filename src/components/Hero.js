@@ -129,6 +129,14 @@ const Hero = () => {
             <Link href="#projects" className={styles.primaryButton}>
               View My Work
             </Link>
+            <Link
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.secondaryButton}
+            >
+              Download CV
+            </Link>
             <Link href="#contact" className={styles.secondaryButton}>
               Get in Touch
             </Link>
