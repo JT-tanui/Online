@@ -19,17 +19,19 @@ Django and PostgreSQL backend behind a React and TypeScript frontend, with
 real-time updates over WebSockets, OAuth mailbox integration, and both cloud and
 self-hosted Docker deployments. It is his employer's product, not his own.
 
-Measured contribution: 461 of 2,027 commits across the two main repositories —
-third of nine engineers. Contributor counts are deduplicated: several people
-commit under multiple git identities. Backend is Django and PostgreSQL (61,903
-lines); frontend is React and TypeScript (89,312 lines).
+Measured contribution: 421 of 1,968 commits across the two main repositories —
+third of nine engineers, counted 1 November 2026 across all refs. Contributor
+counts are deduplicated: several people commit under multiple git identities.
+Backend is Django and PostgreSQL (61,903 lines); frontend is React and
+TypeScript (89,312 lines).
 
 Work includes per-tenant branded transactional email, a unified real-time event
 broadcast layer, OAuth token refresh for Google and Microsoft mailboxes,
 multi-tenant data isolation fixes, the knowledge base and public help centre, and
 a shared form component library.
 
-He is also the largest contributor (123 of 242 commits — more than the other three engineers combined) to **Safe Redact**, a
+He is also the second-largest contributor (232 of 1,188 commits, 20%, second of
+five engineers, counted 1 November 2026) to **Safe Redact**, a
 sibling product: a C# WPF desktop application on .NET 10 (94,532 lines) that
 detects and removes personal information from documents, images, audio and video
 using local ONNX models with DirectML GPU acceleration.
@@ -69,6 +71,19 @@ Front-End Development · Cisco Python Essentials · Trae AI IDE Hackathon
 - **Platform:** Docker, nginx, Caddy, GitHub Actions, Linux, AWS, MinIO
 - **AI and media:** ONNX Runtime, DirectML, LiveKit, whisper.cpp, FFmpeg, pgvector, Remotion
 
+## Writing
+
+- **Six inspections, twelve records** (23 November 2026) —
+  https://busienei-portfolio.netlify.app/blog/offline-first-deduplication
+  How to stop an offline queue duplicating a day of fieldwork. The two-layer
+  idempotency pattern used in Nyukiwatch: a client-generated key sent as a
+  header, an application-level replay cache storing the original response body,
+  and a partial unique index in Postgres behind it as the backstop. Also why
+  event time and arrival time belong in separate columns, and three things he
+  would change — including a dead `queued_at` column found while writing it up.
+
+Index: https://busienei-portfolio.netlify.app/blog
+
 ## Projects
 
 Line counts below are counted from source, excluding dependencies, build output
@@ -77,10 +92,12 @@ and vendored third-party code.
 ### Professional (SafariDesk — employer's products, his contribution stated)
 
 - **SafariDesk** — help desk and ticketing SaaS. Django, React, TypeScript,
-  PostgreSQL, Docker. 151,000+ lines across two repositories; 461 of 2,027 commits, third of nine. https://safaridesk.io
+  PostgreSQL, Docker. 151,000+ lines across two repositories; 421 of 1,968
+  commits, third of nine (counted 1 November 2026). https://safaridesk.io
 - **Safe Redact** — Windows desktop application removing personal data from
   documents, images, audio and video. C#, .NET 10, WPF, ONNX Runtime, DirectML.
-  94,532 lines; 123 of 242 commits, more than the other three engineers combined.
+  94,532 lines; 232 of 1,188 commits (20%), second of five engineers (counted
+  1 November 2026).
 - **SafariDesk CSAT** — self-hosted customer satisfaction survey platform.
   React, Python. 7,454 lines; 17 of 41 commits, most of any of the three contributors.
 
