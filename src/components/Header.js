@@ -61,6 +61,7 @@ const Header = () => {
                   <li><a href="#about">About</a></li>
                   <li><a href="#projects">Projects</a></li>
                   <li><a href="#skills">Skills</a></li>
+                  <li><Link href="/blog">Writing</Link></li>
                   <li><a href="#contact">Contact</a></li>
                 </>
               ) : (
@@ -69,6 +70,7 @@ const Header = () => {
                   <li><Link href="/#about">About</Link></li>
                   <li><Link href="/#projects">Projects</Link></li>
                   <li><Link href="/#skills">Skills</Link></li>
+                  <li><Link href="/blog">Writing</Link></li>
                   <li><Link href="/#contact">Contact</Link></li>
                 </>
               )}
@@ -121,6 +123,7 @@ const Header = () => {
                         <li><a href="#about" onClick={handleMenuItemClick}><i className="fas fa-user"></i> About</a></li>
                         <li><a href="#projects" onClick={handleMenuItemClick}><i className="fas fa-code"></i> Projects</a></li>
                         <li><a href="#skills" onClick={handleMenuItemClick}><i className="fas fa-tools"></i> Skills</a></li>
+                        <li><Link href="/blog" onClick={handleMenuItemClick}><i className="fas fa-pen-nib"></i> Writing</Link></li>
                         <li><a href="#contact" onClick={handleMenuItemClick}><i className="fas fa-envelope"></i> Contact</a></li>
                       </>
                     ) : (
@@ -129,6 +132,7 @@ const Header = () => {
                         <li><Link href="/#about" onClick={handleMenuItemClick}><i className="fas fa-user"></i> About</Link></li>
                         <li><Link href="/#projects" onClick={handleMenuItemClick}><i className="fas fa-code"></i> Projects</Link></li>
                         <li><Link href="/#skills" onClick={handleMenuItemClick}><i className="fas fa-tools"></i> Skills</Link></li>
+                        <li><Link href="/blog" onClick={handleMenuItemClick}><i className="fas fa-pen-nib"></i> Writing</Link></li>
                         <li><Link href="/#contact" onClick={handleMenuItemClick}><i className="fas fa-envelope"></i> Contact</Link></li>
                       </>
                     )}
